@@ -24,31 +24,6 @@ class MainLines(models.Model):
         return self.en_name
 
 
-class SubLines(models.Model):
-    class Meta:
-        verbose_name = 'Sub Lines'
-        verbose_name_plural = 'Sub Lines'
-        ordering = ['sort_order']
-
-    en_name = models.CharField(verbose_name='English name', max_length=50)
-
-    es_name = models.CharField(verbose_name='Spanish name', max_length=50)
-
-    sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number that represents priority')
-
-    en_description = models.TextField(verbose_name='English description')
-
-    es_description = models.TextField(verbose_name='Spanish description')
-
-    main_line = models.ForeignKey(MainLines, verbose_name='main_line', related_name='sub_lines',
-                                  help_text=' main line that belong a sub line')
-
-    def __unicode__(self, language='en'):
-        if language == 'es':
-            return self.es_name
-        return self.en_name
-
-
 class Categories(models.Model):
     class Meta:
         verbose_name = 'Category'
@@ -59,10 +34,12 @@ class Categories(models.Model):
 
     es_name = models.CharField(verbose_name='Spanish name', max_length=50)
 
-    sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number that represents priority')
+    sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number represents priority')
 
-    sub_line = models.ForeignKey(SubLines, verbose_name='sub_line', related_name='categories',
+    sub_line = models.ForeignKey('MainLines', verbose_name='Main Line', related_name='categories',
                                  help_text='sub line that belong a category')
+
+    parent = models.ForeignKey('Categories', verbose_name='parent', related_name='Sons', help_text='Category father')
 
     def __unicode__(self, language='en'):
         if language == 'es':
