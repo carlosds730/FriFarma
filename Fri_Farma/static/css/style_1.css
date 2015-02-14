@@ -1,0 +1,96 @@
+/*DIV CONTENEDOR*/
+#nuevocontenedor {
+    width: 1024px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+    top: 28px;
+    background-color: green;
+    box-shadow: 0 0 10px 10px #b4b4b4;
+}
+
+/*CONTENIDO CENTRO DE PAG HOME*/
+#newcontenido {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+    background: #e8e8e8;
+}
+
+/*IMAGES*/
+.td_image {
+    vertical-align: top;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+.td_image img {
+    display: block;
+}
+
+.text-one {
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 201;
+    font-size: x-large;
+    color: #2DB200;
+    z-index: 999;
+}
+
+.text-two {
+    font-family: Calibri, serif;
+    font-style: normal;
+    font-size: 14px;
+    text-align: justify;
+    line-height: normal;
+    /*color: #666666;*/
+    color: #858484;
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+
+.text-three {
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: normal;
+    color: #858484;
+    position: relative;
+    top: 7px;
+    left: 13px;
+    text-decoration: none;
+}
+
+.main_products {
+    background: none repeat scroll 0 0 rgba(165, 231, 175, 1);
+    position: relative;
+    top: 5px;
+}
+
+.main_products td {
+    border-bottom: 13px solid #e8e8e8;
+}
+
+.separator_line {
+    border-right: 1px solid #3b732e;
+}
+
+/*FOOTER*/
+#footer {
+    height: 60px;
+    padding-top: 0;
+    background-image: url('images/background_nav.jpg');
+}
+
+#footer p {
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #bababa;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+}

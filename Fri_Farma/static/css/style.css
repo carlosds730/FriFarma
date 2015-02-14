@@ -1,0 +1,104 @@
+/*FRONT PAGE*/
+#nuevocontenedor {
+    width: 1024px;
+    height: auto;
+    position: relative;
+    margin: 28px auto;
+    background-color: green;
+    box-shadow: 0 0 10px 10px #b4b4b4;
+}
+
+#newcontenido {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+    background: #ededed;
+}
+
+#footer {
+    height: 72px;
+    padding-top: 0;
+    background-image: url("../images/background_footer.jpg");
+    text-align: center;
+}
+
+#footer p {
+    color: #ffffff;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: Calibri, "Calibri Light", sans-serif;
+    font-size: 12px;
+}
+
+#p1 {
+    font-weight: lighter;
+}
+
+#p2 {
+    font-weight: normal;
+}
+
+/*FRONTPAGE'S CONTENT*/
+/*IMAGES*/
+.td_image {
+    vertical-align: top;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 8px;
+}
+
+.td_image img {
+    display: block;
+}
+
+.text-one {
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    font-size: 24pt;
+    color: #2DB200;
+    z-index: 999;
+}
+
+.text-two {
+    font-family: Calibri, serif;
+    font-style: normal;
+    font-size: 12pt;
+    font-weight: lighter;
+    text-align: justify;
+    line-height: normal;
+    color: #5c5d5d;
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+
+.text-three {
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 18px;
+    line-height: normal;
+    color: #ffffff;
+    position: relative;
+    top: 7px;
+    left: 13px;
+    text-decoration: none;
+}
+
+.main_products {
+    background-color: #87b074;
+    position: relative;
+    top: 5px;
+}
+
+.main_products td {
+    border-bottom: 25px solid #ededed;
+}
+
+.separator_line {
+    border-right: 1px solid #3b732e;
+}

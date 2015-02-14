@@ -1,0 +1,51 @@
+.tr_images {
+    border-top: 15px solid #e8e8e8;
+}
+
+.tr_images td {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    border-spacing: 0;
+    border: 0;
+    border-collapse: collapse;
+    vertical-align: middle;
+    alignment-adjust: central;
+    text-align: center;
+}
+
+.med_pictures {
+    box-shadow: 0 0 10px 10px #b4b4b4;
+}
+
+.tr_med_titles {
+}
+
+.tr_med_titles td {
+    height: auto;
+}
+
+.med_names {
+    margin-top: 13px;
+    margin-bottom: 23px;
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: normal;
+    /*color: #858484;*/
+    color: #666666;
+    text-decoration: none;
+}
+
+.med_names a:link {
+    text-underline-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+.med_names a:visited {
+    text-underline-style: none;
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+#container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    text-align: center;
+    letter-spacing: 0.02em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    font-weight: 300;
+    color: #222;
+}
+
+#text {
+    margin-bottom: 7px;
+}
+
+#flags {
+    text-align: right;
+    height: 20px;
+}
+
+#flags img {
+    vertical-align: middle;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.flag {
+    width: 50px;
+    height: auto;
+    display: inline;
+    float: right;
+    text-align: center;
+    margin-left: 15px;
+}
+
+.flag:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.btn {
+    height: 34px;
+    padding: 9px 13px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 4px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 0 1px;
+    text-decoration: none;
+}
+
+#btn-OK {
+    background-color: #5cb85c;
+    border-color: #4cae4c
+}
+
+#btn-OK:hover {
+    background-color: #449d44;
+    border-color: #398439;
+    text-decoration: none;
+}
+
+#btn-NO {
+    background-color: #d9534f;
+    border-color: #d43f3a
+}
+
+#btn-NO:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+    text-decoration: none;
+}
+

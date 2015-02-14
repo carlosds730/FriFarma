@@ -1,0 +1,121 @@
+/*Table's title*/
+.div_title {
+    font-family: Calibri, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    color: #2DB200;
+}
+
+/*Image's column*/
+.td_inner {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    border-spacing: 0;
+    border: 0;
+    border-collapse: collapse;
+    vertical-align: middle;
+    alignment-adjust: central;
+    text-align: center;
+    border-left: 10px solid #e2fee2;
+    border-right: 10px solid #e2fee2;
+}
+
+/*Medicament's titles*/
+.tr_inner {
+    height: 27px;
+}
+
+.tr_inner a {
+    font-family: Calibri, sans-serif;
+    color: #000000;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.tr_inner a:link {
+    text-decoration: none;
+    text-underline-style: none;
+}
+
+.tr_inner a:visited {
+    color: inherit;
+}
+
+/*Whre goes the info*/
+.table_middle {
+    border-bottom: 10px solid #e2fee2;
+
+}
+
+.table_middle td {
+    border-left: 13px solid #e2fee2;
+    border-right: 13px solid #e2fee2;
+    vertical-align: top;
+    text-align: justify;
+    font-family: Calibri, serif;
+    color: #000000;
+    font-size: 14px;
+    font-style: normal;
+}
+
+.tr_second td {
+    border-left: 5px solid #FFF;
+}
+
+/*Table's footer*/
+.other_cat {
+    vertical-align: middle;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.td_bottom {
+    border-top: solid 1px #3b732e;
+    vertical-align: middle;
+    height: 38px;
+}
+
+.td_bottom a:link {
+    text-underline-style: none;
+    text-decoration: none;
+}
+
+.td_bottom a:visited {
+    text-underline-style: none;
+    text-decoration: none;
+}
+
+.td_bottom a {
+    font-family: Calibri, serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
+    text-align: left;
+    color: #2DB200;
+}
+
+.text_description {
+    font-family: Calibri, serif;
+    font-size: 16px;
+    font-style: normal;
+    margin: 0;
+    text-align: justify;
+}
+
+.first_line {
+}
+
+.first_line td {
+    width: 140px;
+    vertical-align: middle;
+    alignment-adjust: central;
+}
+
+.first_line img {
+    display: block;
+}

@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_page.css' %}">
+    <title>FriFarma</title>
+</head>
+<body style="margin:0px">
+<div width=100% style="background-color:#eee; padding:15px">
+    <div id="container">
+        <div id="flags">
+            <div class="flag" onclick="toSpanish()">
+                <img src="{% static 'images/spain.jpg' %}" width="30" height="20">
+            </div>
+            <div class="flag" onclick="toEnglish()">
+                <img src="{% static 'images/UK.jpg' %}" width="30" height="20">
+            </div>
+        </div>
+        <div id="text">
+            <p id="the_text" style="margin-bottom: 17px">
+                Este sitio es un sitio de medicina, solo entre si usted es un profesional de la salud mayor de 18 años.
+            </p>
+            <a href="main/" class="btn" id="btn-OK">Ir al Sitio</a>
+            <a href="http:\\www.google.com" class="btn" id="btn-NO">Abandonar</a>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function toEnglish() {
+        document.getElementById("the_text").innerHTML = "This is a medicine site, just enter if you are a health professional and older than 18 years.";
+        var bt = document.getElementById("btn-OK");
+        bt.innerHTML = "Go to Site";
+        bt.href = "main/?language=en";
+        document.getElementById("btn-NO").innerHTML = "Leave";
+    }
+
+    function toSpanish() {
+        document.getElementById("the_text").innerHTML = "Este sitio es un sitio de medicina, solo entre si usted es un profesional de la salud mayor de 18 años.";
+        var bt = document.getElementById("btn-OK");
+        bt.innerHTML = "Ir al Sitio";
+        bt.href = "main/";
+        document.getElementById("btn-NO").innerHTML = "Abandonar";
+    }
+</script>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'index_new.html' %}
+
+
+{% block container %}
+    <div id="newcontenido">
+        {{ query }}<br>
+        {{ language }} <br>
+        {{ result|safe }}
+    </div>
+{% endblock %}

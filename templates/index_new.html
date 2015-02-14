@@ -1,0 +1,653 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="es">
+    <meta charset="UTF-8">
+    <title>
+        FriFarma
+    </title>
+    {% block links %}
+        <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/style_slider.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/jqx.base.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+        <link rel="stylesheet" href="{% static 'css/my_style.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'css/menu_products.css' %}" type="text/css"/>
+        <script type="text/javascript" src="{% static 'js/jquery-1.6.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cufon-replace.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/Didact_Gothic_400.font.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.nivo.slider.pack.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/atooltip.jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.jqtransform.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jqxcore.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jqxmenu.js' %}"></script>
+    {% endblock %}
+    <!--[if lt IE 9]>
+    <script>
+        document.createElement("header");
+        document.createElement("footer");
+        document.createElement("section");
+        document.createElement("aside");
+        document.createElement("nav");
+        document.createElement("article");
+        document.createElement("hgroup");
+        document.createElement("time");
+    </script>
+    <noscript>
+        <strong>Warning !</strong>
+        Because your browser does not support HTML5, some elements are simulated using JScript.
+        Unfortunately your browser has disabled scripting. Please enable it in order to display this page.
+    </noscript>
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/html5.js"></script>
+    <style type="text/css">
+        .bg {
+            behavior: url(js/PIE.htc);
+        }
+    </style>
+    <![endif]-->
+    <!--[if lt IE 7]>
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img
+                src="http://www.theie6countdown.com/images/upgrade.jpg" border="0" alt=""/></a>
+    </div>
+    <![endif]-->
+</head>
+<body>
+
+<div id="nuevocontenedor">
+    {% block header %}
+        <header>
+            <img style="display:block" width="1024px" height="92px" src="{% static 'images/banner_top.jpg' %}">
+        </header>
+        <nav>
+            {#TODO: Rebiuld this!!!!!!. Remove every unnecesary href#}
+            <div id='jqxWidget' style="height: 50px">
+                <div id='jqxMenu'
+                     style="visibility: visible; vertical-align: middle; display: block; outline: none; border:0px;">
+                    <ul>
+                        <li id="lgfr" style="vertical-align: middle; cursor: default">
+                            <div class="div_sub_menu" style="padding-top: 8px; width: 135px">
+                                <!--<img style="vertical-align: middle" width="145" height="30"-->
+                                <!--src="images/logo_fri.png">-->
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <a href="/main/">
+                                    <span>Inicio</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <a href="#Education">
+                                    <span>La compañía</span>
+                                </a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <a href="#Education">
+                                        <span>Historia</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#Education">
+                                        <span>Junta directiva</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <a href="#Education"><span>Productos</span></a>
+                            </div>
+                            {#TODO: Add box-shadow to the images#}
+                            <ul>
+                                <li><a>Fármacos</a>
+                                    <ul class="sub_sub">
+                                        <div class="div_sub_sub_menu">
+                                            <table width="492" border="0"
+                                                   style="border-collapse: collapse; border-spacing: 1px">
+                                                <tr>
+                                                    <td colspan="3" class="div_title"
+                                                        style="border-bottom:solid 1px #3b732e; height: 29px;">Fármacos
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">&nbsp;  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="164" class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}"
+                                                                                          width="126" height="84"/></td>
+                                                    <td width="164" class="td_inner"><img
+                                                            src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}" width="126"
+                                                            height="84"/></td>
+                                                    <td width="164" class="td_inner"><img
+                                                            src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
+                                                            width="126" height="84"/></td>
+                                                </tr>
+                                                <tr class="tr_inner">
+                                                    <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
+                                                    <td align="center" valign="top"><a href="#">Para niños</a></td>
+                                                    <td align="center" valign="top"><a href="#">Anticancerígenos</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"
+                                                        style="border-top:dotted 1px #3b732e; vertical-align:middle; height: 20px;">
+                                                        &nbsp;
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-1.jpg' %}"
+                                                                                          width="126" height="84"/></td>
+                                                    <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-2.jpg' %}"
+                                                                                          width="126" height="84"/></td>
+                                                    <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-3.jpg' %}"
+                                                                                          width="126" height="84"/></td>
+                                                </tr>
+                                                <tr class="tr_inner">
+                                                    <td align="center" valign="top"><a href="#">Antihistamínicos </a></td>
+                                                    <td align="center" valign="top"><a href="#">Ámpulas</a></td>
+                                                    <td align="center" valign="top"><a href="#">Jarabes</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                        <a href="index_products.html" class="other_cat">Ver todos los productos</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li><a>Línea dental</a>
+                                    <ul class="sub_sub">
+                                        <div class="div_sub_sub_menu">
+                                            <table width="492" border="0"
+                                                   style="border-collapse: collapse; border-spacing: 0px">
+                                                <tr>
+                                                    <td colspan="3" class="div_title"
+                                                        style="border-bottom:solid 1px #3b732e; height: 29px;">Línea dental
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">&nbsp;  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_inner"><img
+                                                            src="{% static 'images/odontologia/200px-Electrical_toothbrush_20050717_001.jpg' %}"
+                                                            width="126" height="84"/></td>
+                                                    <td class="td_inner"><img
+                                                            src="{% static 'images/odontologia/dental-equipment-24694640.jpg' %}" width="126"
+                                                            height="84"/></td>
+                                                    <td class="td_inner"><img src="{% static 'images/odontologia/compact_piezo.jpg' %}"
+                                                                              width="126" height="84"/></td>
+                                                </tr>
+                                                <tr class="tr_inner">
+                                                    <td align="center" valign="top"><a href="#">Higiene oral</a></td>
+                                                    <td align="center" valign="top"><a href="#">Insumos odontológicos</a></td>
+                                                    <td align="center" valign="top"><a href="#">Equipos</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                               class="table_middle">
+                                                            <tr>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                        <a href="#" class="other_cat">Ver todos los productos</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li><a>Equipos médicos</a>
+                                    <ul class="sub_sub">
+                                        <div class="div_sub_sub_menu">
+                                            <table width="492" border="0"
+                                                   style="border-collapse: collapse; border-spacing: 0px">
+                                                <tr>
+                                                    <td colspan="3" class="div_title"
+                                                        style="border-bottom:solid 1px #3b732e; height: 29px;">Equipos médicos
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">&nbsp;  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_inner"><img
+                                                            src="{% static 'images/equipos/50801533-a38e-4816-a378-7e495c83999e.jpg' %}"
+                                                            width="126" height="84"/></td>
+                                                    <td class="td_inner"><img src="{% static 'images/equipos/luces.jpg' %}" width="126"
+                                                                              height="84"/></td>
+                                                    <td class="td_inner"><img src="{% static 'images/equipos/TAC.jpg' %}"
+                                                                              width="126" height="84"/></td>
+                                                </tr>
+                                                <tr class="tr_inner">
+                                                    <td width="164px" align="center" valign="top"><a href="#">Monitores</a></td>
+                                                    <td width="164px" align="center" valign="top"><a href="#">Luces
+                                                        quirúrgicas</a></td>
+                                                    <td width="164px" align="center" valign="top"><a href="#">Tomógrafos</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                               class="table_middle">
+                                                            <tr>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                        <a href="#" class="other_cat">Ver todos los productos</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li><a>Veterinaria</a>
+                                    <ul class="sub_sub">
+                                        <div class="div_sub_sub_menu">
+                                            <table width="492" border="0"
+                                                   style="border-collapse: collapse; border-spacing: 0px">
+                                                <tr>
+                                                    <td colspan="3" class="div_title"
+                                                        style="border-bottom:solid 1px #3b732e; height: 29px;">Veterinaria
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">&nbsp;  </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}" width="126"
+                                                                              height="84"/></td>
+                                                    <td class="td_inner"><img src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}"
+                                                                              width="126"
+                                                                              height="84"/></td>
+                                                    <td class="td_inner"><img
+                                                            src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
+                                                            width="126" height="84"/></td>
+                                                </tr>
+                                                <tr class="tr_inner">
+                                                    <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
+                                                    <td align="center" valign="top"><a href="#">Antihistamínicos</a></td>
+                                                    <td align="center" valign="top"><a href="#">Analgésicos</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                                               class="table_middle">
+                                                            <tr>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                                <td width="164px">Donec sed odio dui. Etiam porta sem malesuada
+                                                                    magna mollis euismod.
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                        <a href="#" class="other_cat">Ver todos los productos</a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div class="div_sub_menu">
+                                <a href="#Education"><span>Proveedores exclusivos</span></a>
+                            </div>
+                            <ul class="sub_suppliers">
+                                <div class="sub_suppliers_div">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                           style="border-collapse: collapse; border-spacing: 0px">
+                                        <tr>
+                                            <td colspan="3" class="div_title"
+                                                style="border-bottom:solid 1px #3b732e; height: 29px;">Proveedores exclusivos
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">&nbsp;
+
+                                            </td>
+                                        </tr>
+                                        <tr class="first_line">
+                                            <td align="center"><img src="{% static 'images/richet_small.jpg' %}" width="100" height="100"
+                                                                    alt=""/></td>
+                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100" height="100" alt=""/></td>
+                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100" height="100" alt=""/></td>
+                                        </tr>
+                                        <tr class="tr_inner">
+                                            <td align="center" valign="top">
+                                                <a href="#">Laboratorios Richet</a>
+                                            </td>
+                                            <td align="center" valign="top">
+                                                <a href="#">BDR Pharmaceuticals </a>
+                                            </td>
+                                            <td align="center" valign="top">
+                                                <a href="#">Korea United Pharm</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                <a href="#" class="other_cat">Ver todos los proveedores</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <span>Clientes</span>
+                            </div>
+                            <ul class="sub_suppliers">
+                                <div class="sub_suppliers_div">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0"
+                                           style="border-collapse: collapse; border-spacing: 0px">
+                                        <tr>
+                                            <td colspan="3" class="div_title"
+                                                style="border-bottom:solid 1px #3b732e; height: 29px;">Principales Clientes
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">&nbsp;
+
+                                            </td>
+                                        </tr>
+                                        <tr class="first_line">
+                                            <td align="center"><img src="{% static 'images/richet_small.jpg' %}" width="100" height="100"
+                                                                    alt=""/></td>
+                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100" height="100" alt=""/></td>
+                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100" height="100" alt=""/></td>
+                                        </tr>
+                                        <tr class="tr_inner">
+                                            <td align="center" valign="top">
+                                                <a href="#">Laboratorios Richet</a>
+                                            </td>
+                                            <td align="center" valign="top">
+                                                <a href="#">BDR Pharmaceuticals </a>
+                                            </td>
+                                            <td align="center" valign="top">
+                                                <a href="#">Korea United Pharm</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" align="left" valign="middle" class="td_bottom">
+                                                <a href="/clients/" class="other_cat">Ver todos los clientes</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <form method="post" action="/search/">{% csrf_token %}
+                                    <input name="query" class="jqx-input jqx-widget-content"
+                                           style="float: left; height: 22px; width: 130px;margin-top: 3px; border-radius: 7px; text-align: center; color:#808080;"
+                                           placeholder="Buscar"/>
+                                    <input name="language" type="hidden" value="{{ language }}">
+                                </form>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="div_sub_menu">
+                                <a href="#Education"><span>Idiomas</span></a>
+                            </div>
+                            <ul>
+                                <li>
+                                    <img src="{% static 'images/spain.jpg' %}" width="30px" height="20px">
+                                    <a href="/change_language/?language=es">
+                                        <span style="vertical-align: super">&nbsp; Español</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <img src="{% static 'images/UK.jpg' %}" width="30px" height="20px">
+                                    <a href="/change_language/?language=en">
+                                        <span style="vertical-align: super">&nbsp; English</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <br/>
+            </div>
+        </nav>
+    {% endblock %}
+    {% block container %}
+        <section>
+            <div class="main">
+                <div class="wrapper" style="text-align: -webkit-center">
+                    <div id="slider">
+                        <img src="{% static 'images/banner_03.jpg' %}" alt=""
+                             title="<strong>Fármacos</strong>">
+                        <img src="{% static 'images/banner_01.jpg' %}" alt=""
+                             title="<strong>Productos odontológios</strong><span>">
+                        <img src="{% static 'images/banner_04.jpg' %}" alt=""
+                             title="<strong>Equipos médicos</strong><span>">
+                        <img src="{% static 'images/banner_05.jpg' %}" alt=""
+                             title="<strong>Veterinaria</strong><span>">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div id="newcontenido">
+                <table id="table_thecontent" width="100%" border="0" cellpadding="0px" cellspacing="0px"
+                       style="border-collapse:collapse; border-spacing:0px">
+                    <tr id="top_separator">
+                        <td colspan="9">&nbsp;
+                        </td>
+                    </tr>
+                    <tr style="margin-top: 20px;">
+                        <td width="20" rowspan="3" id="left_border">&nbsp;</td>
+                        <td width="303" class="text-one">¿Quiénes Somos?</td>
+                        <td width="18">&nbsp;</td>
+                        <td width="18">&nbsp;</td>
+                        <td width="303" class="text-one">¿Qué hacemos?</td>
+                        <td width="18">&nbsp;</td>
+                        <td width="18">&nbsp;</td>
+                        <td class="text-one">Productos líderes</td>
+                        <td width="20" rowspan="3" id="right_border">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="td_image"><img src="{% static 'images/ourstaff1.gif' %}" width="303" height="202" alt=""/></td>
+                        <td rowspan="2" class="separator_line">&nbsp;</td>
+                        <td rowspan="2">&nbsp;</td>
+                        <td class="td_image"><img src="{% static 'images/ourpatients.gif' %}" width="303" height="202" alt=""/></td>
+                        <td rowspan="2" class="separator_line">&nbsp;</td>
+                        <td rowspan="2">&nbsp;</td>
+                        <td rowspan="2" valign="top">
+                            <table class="main_products" width="100%" border="0" cellpadding="0px" cellspacing="0px"
+                                   style="border-collapse:collapse; border-spacing:0px">
+                                <tr>
+                                    <td width="150"><img
+                                            src="{% static 'images/product-label-design-yellow-diamonds-bottle.jpg' %}" width="150"
+                                            height="120" alt=""/></td>
+                                    <td width="156" valign="top"><a class="text-three" href="#">Nombre</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><img src="{% static 'images/TAC.jpg' %}" width="150" height="120" alt=""/></td>
+                                    <td valign="top"><a class="text-three" href="#">Nombre</a></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="{% static 'images/small.jpg' %}" width="150" height="120" alt=""/></td>
+                                    <td valign="top"><a class="text-three" href="#">Nombre</a></td>
+                                </tr>
+                                <!--<tr>-->
+                                <!--<td><img src="images/TAC.jpg" width="150" height="100" alt=""/></td>-->
+                                <!--<td valign="top"><a class="text-three" href="#">Nombre</a></td>-->
+                                <!--</tr>-->
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <p class="text-two">Frifarma S.R.L. es una empresa distribuidora de especialidades
+                                farmacéuticas establecida en la República Dominicana desde el año 2005.
+                            </p>
+
+                            <p class="text-two" style="margin-bottom:5px">El principal valor de Frifarma S.R.L. lo constituye su
+                                capital humano, por el alto estándar de sus profesionales. Es una empresa plurinacional
+                                conformada por especialistas y directivos de República Dominicana y otros países.
+                            </p>
+                        </td>
+                        <td valign="top">
+                            <p class="text-two">La proyección estratégica de Frifarma S.R.L. se basa en
+                                continuar fortaleciendo su presencia en los nichos actuales, ampliar sus clientes y su
+                                portafolio con productos de última generación, incluyendo los biosimilares.</p>
+
+                            <p class="text-two" style="margin-bottom:5px">Además, se propone ampliar la cartera de proveedores y
+                                de servicios que presta en el área de la salud, orientados a poner a disposición de la medicina
+                                dominicana tratamientos más efectivos y al más bajo costo posible.</p>
+                        </td>
+                    </tr>
+                    <tr id="horizontal_separator">
+                        <td colspan="9">&nbsp;
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    {% endblock %}
+    {% block footer %}
+        <footer id="footer">
+            <p style="padding-top:12px" id="p1">Frifarma S.A. Calle Hatuey # 196. "Los Cacicazgos" Santo Domingo. República
+                Dominicana. </p>
+
+            <p id="p2"><strong> Teléfono : 1809 4829958 Fax: 1809
+                4820300 / email: <a style="text-decoration:none; color:#ffffff"
+                                    href="mailto:campani.frifarma@yahoo.it">campani.frifarma@yahoo.it</a></strong>
+            </p>
+        </footer>
+    {% endblock %}
+</div>
+
+<script type="text/javascript"> Cufon.now(); </script>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#slider').nivoSlider({
+            effect: 'sliceUpDown', //Specify sets like: 'fold,fade,sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft'
+            slices: 17,
+            animSpeed: 500,
+            pauseTime: 6000,
+            startSlide: 0, //Set starting Slide (0 index)
+            directionNav: false, //Next & Prev
+            directionNavHide: false, //Only show on hover
+            controlNav: true, //1,2,3...
+            controlNavThumbs: false, //Use thumbnails for Control Nav
+            controlNavThumbsFromRel: false, //Use image rel for thumbs
+            controlNavThumbsSearch: '.jpg', //Replace this with...
+            controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+            keyboardNav: true, //Use left & right arrows
+            pauseOnHover: true, //Stop animation while hovering
+            manualAdvance: false, //Force manual transitions
+            captionOpacity: 1, //Universal caption opacity
+            beforeChange: function () {
+                $('.nivo-caption').animate({bottom: '-110'}, 400, 'easeInBack')
+            },
+            afterChange: function () {
+                Cufon.refresh();
+                $('.nivo-caption').animate({bottom: '-20'}, 400, 'easeOutBack')
+            },
+            slideshowEnd: function () {
+            } //Triggers after all slides have been shown
+        });
+        Cufon.refresh();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        try {
+            switch (theme) {
+                case 'shinyblack':
+                    $($.find('.megamenu-ul li a:link')).css('color', '#fff');
+                    $($.find('.megamenu-ul li a:hover')).css('color', '#fff');
+                    $($.find('.megamenu-ul li a:visited')).css('color', '#fff');
+                    $($.find('.jqx-menuitem-header')).css('color', '#fff');
+                    break;
+                default:
+                    $($.find('.megamenu-ul li a:link')).css('color', '#2d628a');
+                    $($.find('.megamenu-ul li a:hover')).css('color', '#2d628a');
+                    $($.find('.megamenu-ul li a:visited')).css('color', '#2d628a');
+                    $($.find('.jqx-menuitem-header')).css('color', '#2d628a');
+                    break;
+            }
+        }
+        catch (error) {
+        }
+
+        // Create a jqxMenu
+        $("#jqxMenu").jqxMenu({
+            width: '1024px',
+            height: '50px',
+            autoOpen: true,
+            autoCloseOnMouseLeave: true,
+            showTopLevelArrows: false
+        });
+        $("#jqxMenu").css('visibility', 'visible');
+        $(".buyonline").jqxLinkButton({width: 150, height: 25});
+        $(".jqx-menu-search").jqxButton({width: 60, height: 17});
+    });
+</script>
+
+</body>
+
+
+</html>

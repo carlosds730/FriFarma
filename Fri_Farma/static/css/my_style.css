@@ -1,0 +1,42 @@
+.div_sub_menu {
+    vertical-align: middle;
+    height: 50px;
+    padding-top: 10px;
+}
+
+.div_sub_menu span {
+    font-family: Calibri, serif;
+    font-weight: 101;
+    font-size: medium;
+    vertical-align: middle;
+}
+
+.div_sub_sub_menu {
+    vertical-align: middle;
+    height: auto;
+    width: 492px;
+    padding: 0 20px;
+}
+
+.sub_sub {
+    width: 532px;
+    height: auto;
+    text-indent: each-line;
+    vertical-align: middle;
+    box-shadow: 7px 3px 3px #b4b4b4;
+    background-color: #e2fee2;
+}
+
+.sub_suppliers {
+    width: 460px;
+    height: auto;
+    vertical-align: middle;
+    box-shadow: 7px 3px 3px #b4b4b4;
+}
+
+.sub_suppliers_div {
+    padding: 0 20px;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+}
