@@ -7,17 +7,17 @@ import models
 
 
 class AdminCategories(admin.ModelAdmin):
-    pass
+    list_display = ['en_name', 'parent']
 
 
-class AdminMainLine(admin.ModelAdmin):
-    pass
+class AdminNews(admin.ModelAdmin):
+    list_display = ['title', 'date']
 
 
 class AdminProducts(admin.ModelAdmin, AdminImageMixin):
     filter_horizontal = ('suppliers', 'clients')
-    fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'category', 'suppliers', 'clients']
-    list_display = ['en_name']
+    fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers', 'clients']
+    list_display = ['en_name', 'develop_products']
 
 
 class AdminSupplier(admin.ModelAdmin, AdminImageMixin):
@@ -31,5 +31,5 @@ class AdminClient(admin.ModelAdmin, AdminImageMixin):
 admin.site.register(models.Categories, AdminCategories)
 admin.site.register(models.Client, AdminClient)
 admin.site.register(models.Supplier, AdminSupplier)
-admin.site.register(models.MainLines, AdminMainLine)
 admin.site.register(models.Products, AdminProducts)
+admin.site.register(models.News, AdminNews)

@@ -10,6 +10,20 @@ import stopwords
 def main(request):
     if request.method == 'GET':
         try:
+            language = request.GET['language']
+            collection = {}
+            for category in models.Categories.objects.all():
+                if not category.parent:
+                    if len(category.sons.all()):
+                        if language == 'en':
+                            collection[(category.en_name, True)] = {x.en_name: [(y.en_name, y.image) for y in x.products.all()] for x in category.sons.all()}
+                        else:
+                            collection[(category.es_name, True)] = {x.es_name: [(y.es_name, y.image) for y in x.products.all()] for x in category.sons.all()}
+                    else:
+                        if language == 'en':
+                            collection[(category.en_name, False)] = [(x.en_name, x.image) for x in category.products.all()]
+                        else:
+                            collection[(category.es_name, False)] = [(x.es_name, x.image) for x in category.products.all()]
             clients = models.Client.objects.all()
             if len(clients) > 3:
                 clients = clients[0:3]
@@ -17,22 +31,19 @@ def main(request):
                 return render(request, 'index_new.html',
                               {
                                   'language': request.GET['language'],
-                                  'clients': clients
+                                  'clients': clients,
+                                  'categories': collection
                               }
                 )
             return render(request, 'index_new_en.html',
                           {
                               'language': request.GET['language'],
-                              'clients': clients
+                              'clients': clients,
+                              'categories': collection
                           }
             )
         except KeyError:
-            return render(request, 'index_new.html',
-                          {
-                              'language': 'es',
-                              'clients': clients
-                          }
-            )
+            raise 'Error fix params'
 
 
 def begin(request):

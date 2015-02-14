@@ -6,24 +6,6 @@ from sorl.thumbnail import ImageField
 import stopwords
 
 
-class MainLines(models.Model):
-    class Meta:
-        verbose_name = 'Main'
-        verbose_name_plural = 'Main'
-        ordering = ['sort_order']
-
-    en_name = models.CharField(verbose_name='English name', max_length=50)
-
-    es_name = models.CharField(verbose_name='Spanish name', max_length=50)
-
-    sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number that represents priority')
-
-    def __unicode__(self, language='en'):
-        if language == 'es':
-            return self.es_name
-        return self.en_name
-
-
 class Categories(models.Model):
     class Meta:
         verbose_name = 'Category'
@@ -36,10 +18,7 @@ class Categories(models.Model):
 
     sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number represents priority')
 
-    sub_line = models.ForeignKey('MainLines', verbose_name='Main Line', related_name='categories',
-                                 help_text='sub line that belong a category')
-
-    parent = models.ForeignKey('Categories', verbose_name='parent', related_name='Sons', help_text='Category father')
+    parent = models.ForeignKey('Categories', verbose_name='parent', related_name='sons', help_text='Category father', null=True, blank=True)
 
     def __unicode__(self, language='en'):
         if language == 'es':
@@ -111,12 +90,14 @@ class Products(models.Model):
 
     url = models.URLField(verbose_name='Url', blank=True)
 
-    category = models.ForeignKey(Categories, verbose_name='Category', related_name='products',
+    category = models.ForeignKey('Categories', verbose_name='Category', related_name='products',
                                  help_text='Category that belong a product', blank=True, null=True)
 
-    suppliers = models.ManyToManyField(Supplier, verbose_name='Suppliers', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
+    suppliers = models.ManyToManyField('Supplier', verbose_name='Suppliers', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
 
-    clients = models.ManyToManyField(Client, verbose_name='Clients', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
+    clients = models.ManyToManyField('Client', verbose_name='Clients', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
+
+    develop_products = models.BooleanField(verbose_name='Develop Products', help_text='Tag used for mark develop products')
 
     def save(self, *args, **kwargs):
         tmp = stopwords.word_tokenize(self.en_description)
@@ -133,6 +114,24 @@ class Products(models.Model):
         if language == 'es':
             return self.es_name
         return self.en_name
+
+
+languages = (('en', 'english'), ('es', 'español'))
+
+
+class News(models.Model):
+    class Meta:
+        verbose_name = "Notice"
+        verbose_name_plural = 'News'
+        ordering = ['date']
+
+    title = models.CharField(verbose_name='Title', help_text='The title of the notice', max_length=200)
+
+    description = models.TextField(verbose_name='description', help_text='The body of notice')
+
+    date = models.DateField(name='date', help_text='Date of notice')
+
+    language = models.CharField(choices=languages, name='Language', help_text='Language of notice', max_length=20)
 
 
 
