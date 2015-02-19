@@ -37,7 +37,7 @@ class Supplier(models.Model):
 
     url = models.URLField(verbose_name='url', blank=True)
 
-    image = models.ImageField(verbose_name='Image', upload_to='media', blank=True)
+    image = ImageField(verbose_name='Image', upload_to='media', blank=True)
 
 
 class Client(models.Model):

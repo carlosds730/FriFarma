@@ -14,17 +14,17 @@ class AdminNews(admin.ModelAdmin):
     list_display = ['title', 'date']
 
 
-class AdminProducts(admin.ModelAdmin, AdminImageMixin):
+class AdminProducts(AdminImageMixin, admin.ModelAdmin):
     filter_horizontal = ('suppliers', 'clients')
     fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers', 'clients']
     list_display = ['en_name', 'develop_products']
 
 
-class AdminSupplier(admin.ModelAdmin, AdminImageMixin):
+class AdminSupplier(AdminImageMixin, admin.ModelAdmin):
     pass
 
 
-class AdminClient(admin.ModelAdmin, AdminImageMixin):
+class AdminClient(AdminImageMixin, admin.ModelAdmin):
     list_display = ['en_name', 'es_name']
 
 
