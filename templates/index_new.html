@@ -111,11 +111,11 @@
                             {#TODO: Add box-shadow to the images#}
                             <ul>
                                 {% for category, values in categories.items %}
-                                    <li><a>{{ category.0 }}</a>
+                                    <li><a href="/categories/{{ category.2 }}/?language=es">{{ category.0 }}</a>
                                         {% if category.1 %}
                                             <ul>
                                                 {% for key, value in values.items %}
-                                                    <li><span>{{ key }}</span>
+                                                    <li><a href="/categories/{{ key.1 }}/language=es">{{ key.0 }}</a>
                                                         <ul class="sub_sub">
                                                             <div class="div_sub_sub_menu">
                                                                 <table width="492" border="0"
@@ -480,74 +480,77 @@
     {% endblock %}
 </div>
 
-<script type="text/javascript"> Cufon.now(); </script>
-<script type="text/javascript">
-    $(window).load(function () {
-        $('#slider').nivoSlider({
-            effect: 'sliceUpDown', //Specify sets like: 'fold,fade,sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft'
-            slices: 17,
-            animSpeed: 500,
-            pauseTime: 6000,
-            startSlide: 0, //Set starting Slide (0 index)
-            directionNav: false, //Next & Prev
-            directionNavHide: false, //Only show on hover
-            controlNav: true, //1,2,3...
-            controlNavThumbs: false, //Use thumbnails for Control Nav
-            controlNavThumbsFromRel: false, //Use image rel for thumbs
-            controlNavThumbsSearch: '.jpg', //Replace this with...
-            controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
-            keyboardNav: true, //Use left & right arrows
-            pauseOnHover: true, //Stop animation while hovering
-            manualAdvance: false, //Force manual transitions
-            captionOpacity: 1, //Universal caption opacity
-            beforeChange: function () {
-                $('.nivo-caption').animate({bottom: '-110'}, 400, 'easeInBack')
-            },
-            afterChange: function () {
-                Cufon.refresh();
-                $('.nivo-caption').animate({bottom: '-20'}, 400, 'easeOutBack')
-            },
-            slideshowEnd: function () {
-            } //Triggers after all slides have been shown
+
+{% block scripts %}
+    <script type="text/javascript"> Cufon.now(); </script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                effect: 'sliceUpDown', //Specify sets like: 'fold,fade,sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft'
+                slices: 17,
+                animSpeed: 500,
+                pauseTime: 6000,
+                startSlide: 0, //Set starting Slide (0 index)
+                directionNav: false, //Next & Prev
+                directionNavHide: false, //Only show on hover
+                controlNav: true, //1,2,3...
+                controlNavThumbs: false, //Use thumbnails for Control Nav
+                controlNavThumbsFromRel: false, //Use image rel for thumbs
+                controlNavThumbsSearch: '.jpg', //Replace this with...
+                controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+                keyboardNav: true, //Use left & right arrows
+                pauseOnHover: true, //Stop animation while hovering
+                manualAdvance: false, //Force manual transitions
+                captionOpacity: 1, //Universal caption opacity
+                beforeChange: function () {
+                    $('.nivo-caption').animate({bottom: '-110'}, 400, 'easeInBack')
+                },
+                afterChange: function () {
+                    Cufon.refresh();
+                    $('.nivo-caption').animate({bottom: '-20'}, 400, 'easeOutBack')
+                },
+                slideshowEnd: function () {
+                } //Triggers after all slides have been shown
+            });
+            Cufon.refresh();
         });
-        Cufon.refresh();
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        try {
-            switch (theme) {
-                case 'shinyblack':
-                    $($.find('.megamenu-ul li a:link')).css('color', '#fff');
-                    $($.find('.megamenu-ul li a:hover')).css('color', '#fff');
-                    $($.find('.megamenu-ul li a:visited')).css('color', '#fff');
-                    $($.find('.jqx-menuitem-header')).css('color', '#fff');
-                    break;
-                default:
-                    $($.find('.megamenu-ul li a:link')).css('color', '#2d628a');
-                    $($.find('.megamenu-ul li a:hover')).css('color', '#2d628a');
-                    $($.find('.megamenu-ul li a:visited')).css('color', '#2d628a');
-                    $($.find('.jqx-menuitem-header')).css('color', '#2d628a');
-                    break;
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                switch (theme) {
+                    case 'shinyblack':
+                        $($.find('.megamenu-ul li a:link')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#fff');
+                        $($.find('.jqx-menuitem-header')).css('color', '#fff');
+                        break;
+                    default:
+                        $($.find('.megamenu-ul li a:link')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#2d628a');
+                        $($.find('.jqx-menuitem-header')).css('color', '#2d628a');
+                        break;
+                }
             }
-        }
-        catch (error) {
-        }
+            catch (error) {
+            }
 
-        // Create a jqxMenu
-        $("#jqxMenu").jqxMenu({
-            width: '1024px',
-            height: '50px',
-            autoOpen: true,
-            autoCloseOnMouseLeave: true,
-            showTopLevelArrows: false
+            // Create a jqxMenu
+            $("#jqxMenu").jqxMenu({
+                width: '1024px',
+                height: '50px',
+                autoOpen: true,
+                autoCloseOnMouseLeave: true,
+                showTopLevelArrows: false
+            });
+            $("#jqxMenu").css('visibility', 'visible');
+            $(".buyonline").jqxLinkButton({width: 150, height: 25});
+            $(".jqx-menu-search").jqxButton({width: 60, height: 17});
         });
-        $("#jqxMenu").css('visibility', 'visible');
-        $(".buyonline").jqxLinkButton({width: 150, height: 25});
-        $(".jqx-menu-search").jqxButton({width: 60, height: 17});
-    });
-</script>
+    </script>
 
+{% endblock %}
 </body>
 
 

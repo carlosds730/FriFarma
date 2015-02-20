@@ -1,0 +1,164 @@
+/*FRONT PAGE*/
+#nuevocontenedor {
+    width: 1024px;
+    height: auto;
+    position: relative;
+    margin: 28px auto;
+    background-color: green;
+    box-shadow: 0 0 10px 10px #b4b4b4;
+}
+
+#newcontenido {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    left: 0;
+    top: 0;
+    background: #ededed;
+}
+
+#footer {
+    height: 72px;
+    padding-top: 0;
+    background-image: url("../images/background_footer.jpg");
+    text-align: center;
+}
+
+#footer p {
+    color: #ffffff;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-family: Calibri, "Calibri Light", sans-serif;
+    font-size: 12px;
+}
+
+#p1 {
+    font-weight: lighter;
+}
+
+#p2 {
+    font-weight: normal;
+}
+
+/*COMPANY*/
+/*IMAGE'S CAPTION*/
+#company-content {
+    width: 95%;
+    margin: 0 auto;
+}
+
+#company-content a, p {
+    font-family: Calibri, serif;
+    font-style: normal;
+    text-align: justify;
+    line-height: normal;
+    color: #5c5d5d;
+}
+
+#company-content img {
+    vertical-align: middle;
+}
+
+.company-content-text {
+    height: auto;
+}
+
+.company-content-text h1, h2, h3, h4, h5, h6 {
+    font-family: Calibri, sans-serif;
+    font-style: normal;
+    font-weight: lighter;
+    color: #2DB200;
+}
+
+.company-content-text h1 {
+    font-size: 24pt;
+    text-align: center;
+}
+
+.company-content-text h2 {
+    font-size: 20pt;
+}
+
+.company-content-text p {
+    margin-bottom: 10px;
+    vertical-align: top;
+}
+
+.products-horizontal-separator {
+    height: 1px;
+}
+
+.products-category {
+    width: 98%;
+    margin: 0 auto;
+}
+
+.products-subcategory {
+    width: 95%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.products-subcategory h3 {
+    font-size: 18pt;
+    color: #279701;
+}
+
+.products-product {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid lightgray;
+    display: inline-block;
+    text-align: left;
+}
+
+/*.products-container-product{*/
+/**/
+/*}*/
+
+/*.products-container-product:last-child{*/
+/*border-bottom: 1px solid #d3d3d3;*/
+/*}*/
+
+.products-product-text {
+    width: 65%;
+    float: left;
+    margin-top: 10px;
+}
+
+.products-product-text h4 {
+    color: #217C02;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+.products-product-picture {
+    width: 30%;
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.products-product-picture img {
+    box-shadow: 2px 2px 5px #8A8A8A;
+}
+
+.products-product-concentration-table {
+
+}
+
+.products-product-concentration-table-concentration {
+    float: left;
+    width: 30%;
+}
+
+.products-product-concentration-table-presentation {
+    float: left;
+    width: 70%;
+}
+

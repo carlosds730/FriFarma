@@ -17,9 +17,10 @@ urlpatterns = patterns('',
 
                        # Uncomment the next line to enable the admin:
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^main/', views.main, name='main'),
-                       url(r'^search/', views.search, name='search'),
-                       url(r'^change_language/', views.change_language, name='change_language'),
-                       url(r'^clients/', views.clients, name='clients'),
+                       url(r'^main/?$', views.main, name='main'),
+                       url(r'^search/?$', views.search, name='search'),
+                       url(r'^change_language/?$', views.change_language, name='change_language'),
+                       url(r'^clients/?$', views.clients, name='clients'),
+                       url(r'^categories/(?P<id>\d+)/?$', views.categories, name='categories'),
                        url(r'', views.begin, name='begin')
 )
