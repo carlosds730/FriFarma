@@ -6,11 +6,16 @@ from sorl.thumbnail.admin import AdminImageMixin
 import models
 
 
+class PicturesInline(admin.TabularInline):
+    model = models.Pictures
+
+
 class AdminCategories(admin.ModelAdmin):
     list_display = ['en_name', 'parent']
 
 
 class AdminNews(admin.ModelAdmin):
+    inlines = [PicturesInline]
     list_display = ['title', 'date']
 
 
@@ -33,3 +38,4 @@ admin.site.register(models.Client, AdminClient)
 admin.site.register(models.Supplier, AdminSupplier)
 admin.site.register(models.Products, AdminProducts)
 admin.site.register(models.News, AdminNews)
+

@@ -116,7 +116,7 @@ class Products(models.Model):
         return self.en_name
 
 
-languages = (('en', 'english'), ('es', 'español'))
+languages = (('en', 'English'), ('es', 'Español'))
 
 
 class News(models.Model):
@@ -129,9 +129,20 @@ class News(models.Model):
 
     description = models.TextField(verbose_name='description', help_text='The body of notice')
 
-    date = models.DateField(name='date', help_text='Date of notice')
+    date = models.DateField(verbose_name='Date', help_text='Date of notice')
 
     language = models.CharField(choices=languages, name='Language', help_text='Language of notice', max_length=20)
+
+
+class Pictures(models.Model):
+    class Meta:
+        verbose_name = 'Picture'
+        verbose_name_plural = 'Pictures'
+
+    picture = ImageField(verbose_name='Picture', upload_to='media')
+
+    new = models.ForeignKey('News', verbose_name='notice', related_name='pictures', blank=True, null=True)
+
 
 
 
