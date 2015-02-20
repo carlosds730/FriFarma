@@ -11,7 +11,7 @@ class PicturesInline(admin.TabularInline):
 
 
 class AdminCategories(admin.ModelAdmin):
-    list_display = ['en_name', 'parent']
+    list_display = ['es_name', 'en_name', 'parent']
 
 
 class AdminNews(admin.ModelAdmin):
@@ -20,8 +20,8 @@ class AdminNews(admin.ModelAdmin):
 
 
 class AdminProducts(AdminImageMixin, admin.ModelAdmin):
-    filter_horizontal = ('suppliers', 'clients')
-    fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers', 'clients']
+    filter_horizontal = ('suppliers',)
+    fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers']
     list_display = ['en_name', 'develop_products']
 
 
@@ -38,4 +38,3 @@ admin.site.register(models.Client, AdminClient)
 admin.site.register(models.Supplier, AdminSupplier)
 admin.site.register(models.Products, AdminProducts)
 admin.site.register(models.News, AdminNews)
-

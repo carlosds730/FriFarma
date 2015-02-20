@@ -19,6 +19,10 @@ def word_tokenize(text):
     return str(text).lower().split()
 
 
+def save_description(principio_activo, accion_terapeutica, concentracion, presentacion):
+    return 'principio activo: ' + principio_activo.encode('utf-8') + ' \n' + 'acción terapéutica: ' + accion_terapeutica.encode('utf-8') + ' \n' + 'concentración: ' + concentracion.encode('utf-8') + ' \n' + 'presentación: ' + presentacion.encode('utf-8') + ' \n'
+
+
 def remove_stopwords(collection, language='es'):
     res = ''
     if language == 'es':

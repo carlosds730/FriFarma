@@ -16,7 +16,7 @@ class Categories(models.Model):
 
     es_name = models.CharField(verbose_name='Spanish name', max_length=50)
 
-    sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number represents priority')
+    sort_order = models.PositiveIntegerField(verbose_name='Sort order', blank=True, null=True, help_text='Number represents priority')
 
     parent = models.ForeignKey('Categories', verbose_name='parent', related_name='sons', help_text='Category father', null=True, blank=True)
 
@@ -31,9 +31,9 @@ class Supplier(models.Model):
         verbose_name = 'Supplier'
         verbose_name_plural = 'Suppliers'
 
-    en_name = models.CharField(verbose_name='English name', unique=True, max_length=100)
+    en_name = models.CharField(verbose_name='English name', max_length=100)
 
-    es_name = models.CharField(verbose_name='Spanish name', unique=True, max_length=100)
+    es_name = models.CharField(verbose_name='Spanish name', max_length=100)
 
     url = models.URLField(verbose_name='url', blank=True)
 
@@ -88,6 +88,24 @@ class Products(models.Model):
 
     es_description = models.TextField(verbose_name='Spanish description')
 
+    form = models.CharField(verbose_name='Method', max_length=50, help_text='Method used for products')
+
+    principio_activo = models.CharField(verbose_name='Principio Activo', max_length=50)
+
+    en_principio_activo = models.CharField(verbose_name='Principio Activo', max_length=50)
+
+    accion_terapeutica = models.CharField(verbose_name='Accion Terapeutica', max_length=100)
+
+    en_accion_terapeutica = models.CharField(verbose_name='Accion Terapeutica', max_length=100)
+
+    concentracion = models.CharField(verbose_name='Concentracion', max_length=50)
+
+    en_concentracion = models.CharField(verbose_name='Concentracion', max_length=50)
+
+    presentacion = models.CharField(verbose_name='Presentacion', max_length=50)
+
+    en_presentacion = models.CharField(verbose_name='Presentacion', max_length=50)
+
     url = models.URLField(verbose_name='Url', blank=True)
 
     category = models.ForeignKey('Categories', verbose_name='Category', related_name='products',
@@ -95,15 +113,13 @@ class Products(models.Model):
 
     suppliers = models.ManyToManyField('Supplier', verbose_name='Suppliers', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
 
-    clients = models.ManyToManyField('Client', verbose_name='Clients', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
+    # clients = models.ManyToManyField('Client', verbose_name='Clients', blank=True, null=True, related_name='products', help_text='Products associated with suppliers')
 
     develop_products = models.BooleanField(verbose_name='Develop Products', help_text='Tag used for mark develop products')
 
     def save(self, *args, **kwargs):
-        tmp = stopwords.word_tokenize(self.en_description)
-        self._en_description = stopwords.remove_stopwords(tmp, 'en')
-        tmp = stopwords.word_tokenize(self.es_description)
-        self._es_description = stopwords.remove_stopwords(tmp)
+        self._en_description = stopwords.save_description(self.en_principio_activo, self.en_accion_terapeutica, self.en_presentacion, self.en_concentracion)
+        self._es_description = stopwords.save_description(self.principio_activo, self.accion_terapeutica, self.presentacion, self.concentracion)
         tmp = stopwords.word_tokenize(self.en_name)
         self._en_name = stopwords.remove_stopwords(tmp, 'en')
         tmp = stopwords.word_tokenize(self.es_name)

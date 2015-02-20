@@ -2,6 +2,7 @@
 # -*- coding: utf8 -*-
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.utils.datastructures import SortedDict
 
 import models
 import stopwords
@@ -11,14 +12,18 @@ def main(request):
     if request.method == 'GET':
         try:
             language = request.GET['language']
-            collection = {}
+            collection = SortedDict()
             for category in models.Categories.objects.all():
                 if not category.parent:
                     if len(category.sons.all()):
                         if language == 'en':
-                            collection[(category.en_name, True)] = {x.en_name: [(y.en_name, y.image) for y in x.products.all()] for x in category.sons.all()}
+                            collection[(category.en_name, True)] = SortedDict()
+                            for x in category.sons.all():
+                                collection[(category.en_name, True)][x.en_name] = [(y.en_name, y.image) for y in x.products.all()]
                         else:
-                            collection[(category.es_name, True)] = {x.es_name: [(y.es_name, y.image) for y in x.products.all()] for x in category.sons.all()}
+                            collection[(category.es_name, True)] = SortedDict()
+                            for x in category.sons.all():
+                                collection[(category.es_name, True)][x.es_name] = [(y.es_name, y.image) for y in x.products.all()]
                     else:
                         if language == 'en':
                             collection[(category.en_name, False)] = [(x.en_name, x.image) for x in category.products.all()]
