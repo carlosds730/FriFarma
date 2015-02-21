@@ -22,5 +22,6 @@ urlpatterns = patterns('',
                        url(r'^change_language/?$', views.change_language, name='change_language'),
                        url(r'^clients/?$', views.clients, name='clients'),
                        url(r'^categories/(?P<id>\d+)/?$', views.categories, name='categories'),
+                       url(r'^categories/?$', views.categories_all, name='categories all'),
                        url(r'', views.begin, name='begin')
 )

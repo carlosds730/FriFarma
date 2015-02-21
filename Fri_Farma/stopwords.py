@@ -16,7 +16,7 @@ es_stopwords = ['de', 'la', 'que', 'el', 'en', 'y', 'a', 'los', 'del', 'se', 'la
 
 
 def word_tokenize(text):
-    return str(text).lower().split()
+    return str(text.encode('utf-8')).lower().split()
 
 
 def save_description(principio_activo, accion_terapeutica, concentracion, presentacion):
