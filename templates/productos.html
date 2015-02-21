@@ -1,7 +1,6 @@
 {% extends 'index_new.html' %}
 {% load staticfiles %}
 
-
 {% block links %}
     <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="all">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" media="all">
@@ -19,215 +18,139 @@
     <script type="text/javascript" src="{% static 'js/jqxmenu.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/company.js' %}"></script>
 {% endblock %}
-
-
-
 {% block container %}
     <section>
         <div id="newcontenido">
             <div id="company-content">
                 <div class="company-content-text">
                     <h1 style="padding-top: 5px">Productos</h1>
+                    {% for key, values in collection.items %}
+                        {% if not key.1 %}
+                            <div class="products-category">
+                                <h2 id="surfactantes">{{ key.0 }}</h2>
 
-                    <div class="products-category">
-                        <h2 id="surfactantes">Surfactantes</h2>
+                                <div class="products-subcategory">
+                                    <div class="products-container-product" style="text-align: center">
+                                        {% for tuple in values %}
+                                            <div class="products-product">
+                                                <div class="products-product-text">
+                                                    <h4>{{ tuple.0 }}</h4>
+                                                    <h5>{{ tuple.1 }}</h5>
 
-                        <div class="products-subcategory">
-                            <div class="products-container-product" style="text-align: center">
-                                <div class="products-product">
-                                    <div class="products-product-text">
-                                        <h4>Surfactante B</h4>
-                                        <h5>Suspensión intratraqueal</h5>
+                                                    <p style="margin-top: 7px"><strong>Principio Activo:</strong>
+                                                        {{ tuple.4 }}</p>
 
-                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
-                                            Surfactante pulmonar bovino</p>
+                                                    <p><strong>Proveedor:</strong>
+                                                        {% for x in tuple.3 %}
+                                                            {{ x }}
+                                                        {% endfor %}
+                                                    </p>
 
-                                        <p><strong>Proveedor: </strong>Laboratorios Richet S.A. </p>
+                                                    <p><strong>Grupo terapéutico: </strong>{{ key.0 }}</p>
 
-                                        <p><strong>Grupo terapéutico: </strong>Surfactantes</p>
+                                                    <p><strong>Acción terapéutica: </strong>{{ tuple.5 }}</p>
 
-                                        <p><strong>Acción terapéutica: </strong>PS.D.R en neonatos.</p>
+                                                    <div class="products-product-concentration-table">
+                                                        <div class="products-product-concentration-table-concentration">
+                                                            <p style="margin-bottom: 5px">
+                                                                <strong>Concentración</strong>
+                                                            </p>
+                                                            {% for x in tuple.6 %}
+                                                                <p>
+                                                                    {{ x }}
+                                                                </p>
+                                                            {% endfor %}
+                                                        </div>
+                                                        <div class="products-product-concentration-table-presentation">
+                                                            <p style="margin-bottom: 5px">
+                                                                <strong>Presentación</strong>
+                                                            </p>
 
-                                        <div class="products-product-concentration-table">
-                                            <div class="products-product-concentration-table-concentration">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Concentración</strong>
-                                                </p>
-
-                                                <p>
-                                                    30 mg/mL
-                                                </p>
-
-                                                <p>
-                                                    25 mg/mL
-                                                </p>
+                                                            {% for x in tuple.7 %}
+                                                                <p>
+                                                                    {{ x }}
+                                                                </p>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="products-product-picture">
+                                                    {% if tuple.2 %}
+                                                        <img src="{% static tuple.2.path %}">
+                                                    {% else %}
+                                                        <img src="{% static '' %}">
+                                                    {% endif %}
+                                                </div>
                                             </div>
-                                            <div class="products-product-concentration-table-presentation">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Presentación</strong>
-                                                </p>
+                                        {% endfor %}
 
-                                                <p>
-                                                    Frasco amp. x 90mg x 120 mg, x 240 mg
-                                                </p>
-
-                                                <p>
-                                                    Frasco ampolla x 200 mg
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="products-product-picture">
-                                        <img src="images/productos/Surfactante%20B%20-%202.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="products-category">
-                        <h2 id="antibioticos">Antibióticos</h2>
-
-                        <div class="products-subcategory">
-                            <h3 id="penicilinas">Penicilinas</h3>
-
-                            <div style="text-align: center">
-                                <div class="products-product">
-                                    <div class="products-product-text">
-                                        <h4>Piperacilina-Tazobactam</h4>
-                                        <h5>Inyectable</h5>
-
-                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
-                                            Piperacilina sódica
-                                            + Tazobactam sódica</p>
-
-                                        <p><strong>Proveedor: </strong>Laboratorios Richet S.A. </p>
-
-                                        <p><strong>Grupo terapéutico: </strong>Antibióticos-Penicilinas. </p>
-
-                                        <p><strong>Acción terapéutica: </strong>Penicilina con acción antipseudomonal con un inhibidor de las bectalactamasas.</p>
-
-                                        <div class="products-product-concentration-table">
-                                            <div class="products-product-concentration-table-concentration">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Concentración</strong>
-                                                </p>
-
-                                                <p>
-                                                    30 mg/mL
-                                                </p>
-
-                                                <p>
-                                                    25 mg/mL
-                                                </p>
-                                            </div>
-                                            <div class="products-product-concentration-table-presentation">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Presentación</strong>
-                                                </p>
-
-                                                <p>
-                                                    Frasco amp. x 90mg x 120 mg, x 240 mg
-                                                </p>
-
-                                                <p>
-                                                    Frasco ampolla x 200 mg
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="products-product-picture">
-                                        <img src="images/productos/Piperacilina.jpg">
                                     </div>
                                 </div>
                             </div>
-                            <div style="text-align: center">
-                                <div class="products-product">
-                                    <div class="products-product-text">
-                                        <h4>Sultamicilina</h4>
-                                        <h5>Inyectable</h5>
+                        {% else %}
+                            <div class="products-category">
+                                <h2 id="antibioticos">{{ key.0 }}</h2>
+                                {% for keys, val in values.items %}
+                                    <div class="products-subcategory">
+                                        <h3 id="penicilinas">{{ keys }}</h3>
 
-                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
-                                            Ampicilina Sódica- Sulbactam Sódico.</p>
+                                        <div style="text-align: center">
+                                            {% for v in val %}
+                                                <div class="products-product">
+                                                    <div class="products-product-text">
+                                                        <h4>{{ v.0 }}</h4>
+                                                        <h5>{{ v.1 }}</h5>
 
-                                        <p><strong>Proveedor: </strong>Laboratorios Richet S.A. </p>
+                                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
+                                                            {{ v.4 }}</p>
 
-                                        <p><strong>Grupo terapéutico: </strong>Antibióticos-Penicilinas. </p>
+                                                        <p><strong>Proveedor:</strong>
+                                                            {% for x in v.3 %}
+                                                                {{ x }}
+                                                            {% endfor %}
+                                                        </p>
 
-                                        <p><strong>Acción terapéutica: </strong>Antibiótico de amplio espectro con un inhibidor de la bectalactamasas.</p>
+                                                        <p><strong>Grupo terapéutico: </strong>{{ key.0 }}
+                                                            - {{ keys }}. </p>
 
-                                        <div class="products-product-concentration-table">
-                                            <div class="products-product-concentration-table-concentration">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Concentración</strong>
-                                                </p>
+                                                        <p><strong>Acción terapéutica: </strong>{{ v.5 }}.</p>
 
-                                                <p>
-                                                    1,5 g
-                                                </p>
-                                            </div>
-                                            <div class="products-product-concentration-table-presentation">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Presentación</strong>
-                                                </p>
+                                                        <div class="products-product-concentration-table">
+                                                            <div class="products-product-concentration-table-concentration">
+                                                                <p style="margin-bottom: 5px">
+                                                                    <strong>Concentración</strong>
+                                                                </p>
 
-                                                <p>
-                                                    Frasco ampolla x 1
-                                                </p>
-                                            </div>
+                                                                {% for x in v.6 %}
+                                                                    <p>{{ x }}</p>
+                                                                {% endfor %}
+
+                                                            </div>
+                                                            <div class="products-product-concentration-table-presentation">
+                                                                <p style="margin-bottom: 5px">
+                                                                    <strong>Presentación</strong>
+                                                                </p>
+                                                                {% for x in v.7 %}
+                                                                    <p>{{ x }}</p>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="products-product-picture">
+                                                        {% if v.2 %}
+                                                            <img src="{% static v.2.path %}">
+                                                        {% else %}
+                                                            <img src="{% static '' %}">
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
                                         </div>
                                     </div>
-                                    <div class="products-product-picture">
-                                        <img src="images/productos/Piperacilina.jpg">
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                        <div class="products-subcategory">
-                            <h3 id="polipeptidicos">Polipeptídicos</h3>
-
-                            <div style="text-align: center">
-                                <div class="products-product">
-                                    <div class="products-product-text">
-                                        <h4>Colistina</h4>
-                                        <h5>Inyectable</h5>
-
-                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
-                                            Colistina metansulfonato</p>
-
-                                        <p><strong>Proveedor: </strong>Laboratorios Richet S.A. </p>
-
-                                        <p><strong>Grupo terapéutico: </strong>Antibióticos-Polipeptídicos</p>
-
-                                        <p><strong>Acción terapéutica: </strong>Antibiótico.</p>
-
-                                        <div class="products-product-concentration-table">
-                                            <div class="products-product-concentration-table-concentration">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Concentración</strong>
-                                                </p>
-
-                                                <p>
-                                                    100 mg
-                                                </p>
-                                            </div>
-                                            <div class="products-product-concentration-table-presentation">
-                                                <p style="margin-bottom: 5px">
-                                                    <strong>Presentación</strong>
-                                                </p>
-
-                                                <p>
-                                                    Frasco Ampolla x 1(con amp solv. x 2 mL)
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="products-product-picture">
-                                        <img src="images/productos/Colistina.jpg">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
                 <div id="last-line" style="height: 5px">
                 </div>

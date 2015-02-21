@@ -27,7 +27,7 @@ if __name__ == '__main__':
                 category, _ = models.Categories.objects.get_or_create(es_name=tmp[3])
                 supplier, _ = models.Supplier.objects.get_or_create(es_name=tmp[4])
                 supplier.save()
-                product = models.Products.objects.create(es_name=name, sort_order=count, form=tipo, category=category, principio_activo=tmp[5], accion_terapeutica=tmp[6], concentracion=tmp[7], presentacion=tmp[7])
+                product = models.Products.objects.create(es_name=name, sort_order=count, form=tipo, category=category, principio_activo=tmp[5], accion_terapeutica=tmp[6], concentracion=tmp[7], presentacion=tmp[8])
                 product.suppliers.add(supplier)
                 product.save()
                 parent, _ = models.Categories.objects.get_or_create(es_name=tmp[2])
@@ -39,7 +39,7 @@ if __name__ == '__main__':
                 supplier, _ = models.Supplier.objects.get_or_create(es_name=tmp[4])
                 supplier.save()
 
-                product = models.Products.objects.create(es_name=name, sort_order=count, form=tipo, category=category, principio_activo=tmp[5], accion_terapeutica=tmp[6], concentracion=tmp[7], presentacion=tmp[7])
+                product = models.Products.objects.create(es_name=name, sort_order=count, form=tipo, category=category, principio_activo=tmp[5], accion_terapeutica=tmp[6], concentracion=tmp[7], presentacion=tmp[8])
                 product.suppliers.add(supplier)
                 product.save()
             count += 100
