@@ -49,7 +49,7 @@
                 return e[b].apply(e, c)
             }
         }
-        return
+
     };
     a.jqx.hasProperty = function (c, b) {
         if (typeof(b) == "object") {
@@ -327,7 +327,7 @@
         l.widgetName = d;
         a.data(c, d, j);
         a.data(c, "jqxWidget", j.instance);
-        var h = new Array();
+        var h = [];
         var l = j.instance;
         while (l) {
             l.isInitialized = false;
@@ -678,7 +678,7 @@
                     }
                     return 0
                 };
-                f.hiddenWidgets = new Array();
+                f.hiddenWidgets = [];
                 f.resizeHandlers.sort(p);
                 a.each(f.resizeHandlers, function (s, v) {
                     var u = this.widget.data();
@@ -727,7 +727,7 @@
                     }
                     f.__resizeInterval = setInterval(function () {
                         var q = false;
-                        var r = new Array();
+                        var r = [];
                         a.each(f.hiddenWidgets, function (s, t) {
                             if (a.jqx.isHidden(this.widget)) {
                                 q = true;
@@ -744,7 +744,7 @@
                 }
             };
             if (!this.resizeHandlers) {
-                this.resizeHandlers = new Array();
+                this.resizeHandlers = [];
                 var j = a(window);
                 if (j.on) {
                     j.on("resize.jqx", function (n) {
@@ -897,7 +897,7 @@
                     var j = k;
                     switch (h.type) {
                         case"number":
-                            j = new Number(k);
+                            j = Number(k);
                             if (isNaN(j)) {
                                 j = k
                             }
@@ -1070,7 +1070,14 @@
             if (b.indexOf("Opera") != -1 && b.indexOf("Mobi") != -1 && b.indexOf("Opera Mobi") != -1) {
                 return true
             }
-            var c = {ios: "i(?:Pad|Phone|Pod)(?:.*)CPU(?: iPhone)? OS ", android: "(Android |HTC_|Silk/)", blackberry: "BlackBerry(?:.*)Version/", rimTablet: "RIM Tablet OS ", webos: "(?:webOS|hpwOS)/", bada: "Bada/"};
+            var c = {
+                ios: "i(?:Pad|Phone|Pod)(?:.*)CPU(?: iPhone)? OS ",
+                android: "(Android |HTC_|Silk/)",
+                blackberry: "BlackBerry(?:.*)Version/",
+                rimTablet: "RIM Tablet OS ",
+                webos: "(?:webOS|hpwOS)/",
+                bada: "Bada/"
+            };
             try {
                 if (this.touchDevice != undefined) {
                     return this.touchDevice
@@ -1188,7 +1195,7 @@
                 }
             }
             if (!b.touches) {
-                b.touches = new Array();
+                b.touches = [];
                 b.touches[0] = b.originalEvent != undefined ? b.originalEvent : b;
                 if (b.originalEvent != undefined && b.pageX) {
                     b.touches[0] = b
@@ -1508,7 +1515,21 @@
     })
 })(jQuery);
 (function (b) {
-    b.extend(jQuery.event.special, {close: {noBubble: true}, open: {noBubble: true}, cellclick: {noBubble: true}, rowclick: {noBubble: true}, tabclick: {noBubble: true}, selected: {noBubble: true}, expanded: {noBubble: true}, collapsed: {noBubble: true}, valuechanged: {noBubble: true}, expandedItem: {noBubble: true}, collapsedItem: {noBubble: true}, expandingItem: {noBubble: true}, collapsingItem: {noBubble: true}});
+    b.extend(jQuery.event.special, {
+        close: {noBubble: true},
+        open: {noBubble: true},
+        cellclick: {noBubble: true},
+        rowclick: {noBubble: true},
+        tabclick: {noBubble: true},
+        selected: {noBubble: true},
+        expanded: {noBubble: true},
+        collapsed: {noBubble: true},
+        valuechanged: {noBubble: true},
+        expandedItem: {noBubble: true},
+        collapsedItem: {noBubble: true},
+        expandingItem: {noBubble: true},
+        collapsingItem: {noBubble: true}
+    });
     b.fn.extend({
         ischildof: function (f) {
             var d = b(this).parents().get();
@@ -1590,6 +1611,9 @@
                 c = -l.top
             }
         }
-        return {top: c + j.top + (k.pageYOffset || e.scrollTop) - (e.clientTop || 0), left: h + j.left + (k.pageXOffset || e.scrollLeft) - (e.clientLeft || 0)}
+        return {
+            top: c + j.top + (k.pageYOffset || e.scrollTop) - (e.clientTop || 0),
+            left: h + j.left + (k.pageXOffset || e.scrollLeft) - (e.clientLeft || 0)
+        }
     }
 })(jQuery);

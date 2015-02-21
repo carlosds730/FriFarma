@@ -49,11 +49,11 @@ def main(request):
             # collection[(category.es_name, True, category.id)] = SortedDict()
             # for x in category.sons.all():
             # collection[(category.es_name, True, category.id)][x.es_name, x.id] = [(y.es_name, y.image, y.id) for y in x.products.all()]
-            #         else:
-            #             if language == 'en':
-            #                 collection[(category.en_name, False, category.id)] = [(x.en_name, x.image, x.id) for x in category.products.all()]
-            #             else:
-            #                 collection[(category.es_name, False, category.id)] = [(x.es_name, x.image, x.id) for x in category.products.all()]
+            # else:
+            # if language == 'en':
+            # collection[(category.en_name, False, category.id)] = [(x.en_name, x.image, x.id) for x in category.products.all()]
+            # else:
+            # collection[(category.es_name, False, category.id)] = [(x.es_name, x.image, x.id) for x in category.products.all()]
             if request.GET['language'] == 'es':
                 return render(request, 'index_new.html',
                               {
@@ -197,6 +197,15 @@ def change_language(request):
     return HttpResponseRedirect(request.environ['HTTP_REFERER'].split('?')[0] + '?language=' + request.GET['language'])
 
 
+def company(request):
+    if request.method == 'GET':
+        if request.GET['language'] == 'es':
+            return render(request, 'company.html', {
+            })
+        else:
+            return render(request, 'company_en.html', {
+            })
+
 def clients(request):
     if request.method == 'GET':
         try:
@@ -228,6 +237,10 @@ def divide(val, language):
         return [x.strip() for x in val.split(';')]
     else:
         return [x.strip() for x in val.split(';')]
+
+
+def my_cmp(x, y):
+    return cmp(x[0], y[0])
 
 
 def categories(request, id):
@@ -298,6 +311,11 @@ def categories_all(request):
                         collection[(category.en_name, False)] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in category.products.all()]
                     else:
                         collection[(category.es_name, False)] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in category.products.all()]
+                        # if len(category.products.all()):
+                        # if request.GET['language'] == 'en':
+                        #         collection[('', False)] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in category.products.all()]
+                        #     else:
+                        #         collection[('', False)] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in category.products.all()]
         if request.GET['language'] == 'en':
             return render(request, 'productos_en.html', {
                 'language': 'en',

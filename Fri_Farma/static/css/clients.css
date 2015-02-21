@@ -1,23 +1,23 @@
 .client {
-    font-family: Calibri, sans-serif;
-    font-style: normal;
+	font-family: Calibri, sans-serif;
+	font-style: normal;
     font-weight: bold;
     font-size: 20px;
     line-height: normal;
     /*color: #858484;*/
-    color: #666666;
-    text-decoration: none;
-    margin-bottom: 5px;
+	color: #666666;
+	text-decoration: none;
+	margin-bottom: 5px;
 }
 
 .client a:link {
-    text-underline-style: none;
-    text-decoration: none;
-    color: inherit;
+	text-underline-style: none;
+	text-decoration: none;
+	color: inherit;
 }
 
 .client a:visited {
-    text-underline-style: none;
-    text-decoration: none;
-    color: inherit;
+	text-underline-style: none;
+	text-decoration: none;
+	color: inherit;
 }

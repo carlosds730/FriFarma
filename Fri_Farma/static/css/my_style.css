@@ -28,10 +28,11 @@
 }
 
 .sub_suppliers {
-    width: 460px;
+    width: 580px;
     height: auto;
     vertical-align: middle;
     box-shadow: 7px 3px 3px #b4b4b4;
+    background-color: #e2fee2;
 }
 
 .sub_suppliers_div {

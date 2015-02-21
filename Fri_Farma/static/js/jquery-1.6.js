@@ -2362,19 +2362,7 @@
             for (var c in{context: 1, url: 1})c in b ? a[c] = b[c] : c in f.ajaxSettings && (a[c] = f.ajaxSettings[c]);
             return a
         },
-        ajaxSettings: {
-            url: bW,
-            isLocal: bK.test(bX[1]),
-            global: !0,
-            type: "GET",
-            contentType: "application/x-www-form-urlencoded",
-            processData: !0,
-            async: !0,
-            accepts: {xml: "application/xml, text/xml", html: "text/html", text: "text/plain", json: "application/json, text/javascript", "*": "*/*"},
-            contents: {xml: /xml/, html: /html/, json: /json/},
-            responseFields: {xml: "responseXML", text: "responseText"},
-            converters: {"* text": a.String, "text html": !0, "text json": f.parseJSON, "text xml": f.parseXML}
-        },
+        ajaxSettings: {url: bW, isLocal: bK.test(bX[1]), global: !0, type: "GET", contentType: "application/x-www-form-urlencoded", processData: !0, async: !0, accepts: {xml: "application/xml, text/xml", html: "text/html", text: "text/plain", json: "application/json, text/javascript", "*": "*/*"}, contents: {xml: /xml/, html: /html/, json: /json/}, responseFields: {xml: "responseXML", text: "responseText"}, converters: {"* text": a.String, "text html": !0, "text json": f.parseJSON, "text xml": f.parseXML}},
         ajaxPrefilter: bZ(bU),
         ajaxTransport: bZ(bV),
         ajax: function (a, c) {
