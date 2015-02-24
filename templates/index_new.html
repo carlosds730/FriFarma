@@ -113,7 +113,6 @@
                             <div class="div_sub_menu">
                                 <a href="/categories/?language=es"><span>Productos</span></a>
                             </div>
-                            {#TODO: Add box-shadow to the images#}
                             <ul style="width: 170px">
                                 {% for category, values in categories.items %}
                                     <li><a href="/categories/{{ category.2 }}/?language=es">{{ category.0 }}</a>
@@ -121,14 +120,23 @@
                                             <ul style="width: 180px">
                                                 {% for key, value in values.items %}
                                                     <li><a href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a>
+                                                        <ul>
+                                                            {% for v in value %}
+                                                                <li>
+                                                                    <a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
                                         {% else %}
                                             <ul>
-                                                <li>
-                                                    <a>AAAA</a>
-                                                </li>
+                                                {% for v in values %}
+                                                    <li>
+                                                        <a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a>
+                                                    </li>
+                                                {% endfor %}
                                             </ul>
                                         {% endif %}
                                     </li>

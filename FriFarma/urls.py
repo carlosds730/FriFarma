@@ -30,6 +30,7 @@ urlpatterns = static(settings.MEDIA_URL,
                                                                    url(r'^clients/?$', views.clients, name='clients'),
                                                                    url(r'^company/?$', views.company, name='company'),
                                                                    url(r'^categories/(?P<id>\d+)/?$', views.categories, name='categories'),
+                                                                   url(r'^products/(?P<id>\d+)/?$', views.products, name='categories'),
                                                                    url(r'^categories/?$', views.categories_all, name='categories all'),
                                                                    url(r'', views.begin, name='begin')
 )

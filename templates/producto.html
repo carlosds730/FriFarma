@@ -1,0 +1,124 @@
+{% extends 'index_new.html' %}
+{% load url from future %}{% load thumbnail %}
+{% load staticfiles %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/jqx.base.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/style_products.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/menu_products.css' %}" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/jquery-1.6.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/atooltip.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.jqtransform.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jqxcore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jqxmenu.js' %}"></script>
+{% endblock %}
+{% block container %}
+    <section>
+        <div id="newcontenido">
+            <div id="company-content">
+                <div class="company-content-text">
+                    <div class="products-category">
+                        <div class="products-subcategory">
+                            <div class="products-container-product" style="text-align: center">
+                                <div class="products-product" style="border-top: 0px">
+                                    <div class="products-product-text">
+                                        <h4>{{ collection.0 }}</h4>
+                                        <h5>{{ collection.1 }}</h5>
+
+                                        <p style="margin-top: 7px"><strong>Principio Activo:</strong>
+                                            {{ collection.4 }}</p>
+
+                                        <p><strong>Proveedor:</strong>
+                                            {% for x in collection.3 %}
+                                                {{ x }}
+                                            {% endfor %}
+                                        </p>
+
+                                        <p><strong>Grupo terapéutico: </strong>{{ collection.8 }}</p>
+
+                                        <p><strong>Acción terapéutica: </strong>{{ collection.5 }}</p>
+
+                                        <div class="products-product-concentration-table">
+                                            <div class="products-product-concentration-table-concentration">
+                                                <p style="margin-bottom: 5px">
+                                                    <strong>Concentración</strong>
+                                                </p>
+                                                {% for x in collection.6 %}
+                                                    <p>
+                                                        {{ x }}
+                                                    </p>
+                                                {% endfor %}
+                                            </div>
+                                            <div class="products-product-concentration-table-presentation">
+                                                <p style="margin-bottom: 5px">
+                                                    <strong>Presentación</strong>
+                                                </p>
+
+                                                {% for x in collection.7 %}
+                                                    <p>
+                                                        {{ x }}
+                                                    </p>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="products-product-picture">
+                                        {% if collection.2 %}
+                                            <img src="{{ collection.2.url }}" width="{{ collection.2.width }}" height="{{ collection.2.height }}" alt="{{ collection.0 }}">
+                                        {% else %}
+                                            <img src="{% static '' %}" alt="{{ collection.0 }}" width="250px" height="236px">
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="last-line" style="height: 5px">
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                switch (theme) {
+                    case 'shinyblack':
+                        $($.find('.megamenu-ul li a:link')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#fff');
+                        $($.find('.jqx-menuitem-header')).css('color', '#fff');
+                        break;
+                    default:
+                        $($.find('.megamenu-ul li a:link')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#2d628a');
+                        $($.find('.jqx-menuitem-header')).css('color', '#2d628a');
+                        break;
+                }
+            }
+            catch (error) {
+            }
+
+            // Create a jqxMenu
+            $("#jqxMenu").jqxMenu({
+                width: '1024px',
+                height: '50px',
+                autoOpen: true,
+                autoCloseOnMouseLeave: true,
+                showTopLevelArrows: false
+            });
+            $("#jqxMenu").css('visibility', 'visible');
+            $(".buyonline").jqxLinkButton({width: 150, height: 25});
+            $(".jqx-menu-search").jqxButton({width: 60, height: 17});
+        });
+    </script>
+{% endblock %}
