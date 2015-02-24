@@ -201,10 +201,13 @@ def company(request):
     if request.method == 'GET':
         if request.GET['language'] == 'es':
             return render(request, 'company.html', {
+                'categories': collection_es
             })
         else:
             return render(request, 'company_en.html', {
+                'categories': collection_en
             })
+
 
 def clients(request):
     if request.method == 'GET':

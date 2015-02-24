@@ -155,10 +155,11 @@
 .products-product-concentration-table-concentration {
     float: left;
     width: 30%;
+    margin-right: 15px;
 }
 
 .products-product-concentration-table-presentation {
     float: left;
-    width: 70%;
+    width: 60%;
 }
 

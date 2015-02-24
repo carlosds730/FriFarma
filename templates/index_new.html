@@ -114,126 +114,21 @@
                                 <a href="/categories/?language=es"><span>Productos</span></a>
                             </div>
                             {#TODO: Add box-shadow to the images#}
-                            <ul>
+                            <ul style="width: 170px">
                                 {% for category, values in categories.items %}
                                     <li><a href="/categories/{{ category.2 }}/?language=es">{{ category.0 }}</a>
                                         {% if category.1 %}
-                                            <ul>
+                                            <ul style="width: 180px">
                                                 {% for key, value in values.items %}
                                                     <li><a href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a>
-                                                        <ul class="sub_sub">
-                                                            <div class="div_sub_sub_menu">
-                                                                <table width="492" border="0"
-                                                                       style="border-collapse: collapse; border-spacing: 1px">
-                                                                    <tr>
-                                                                        <td colspan="3" class="div_title"
-                                                                            style="border-bottom:solid 1px #3b732e; height: 29px;">{{ key }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3">&nbsp;  </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img
-                                                                                src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}" width="126"
-                                                                                height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img
-                                                                                src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
-                                                                                width="126" height="84"/></td>
-                                                                    </tr>
-                                                                    <tr class="tr_inner">
-                                                                        <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Para niños</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Anticancerígenos</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3"
-                                                                            style="border-top:dotted 1px #3b732e; vertical-align:middle; height: 20px;">
-                                                                            &nbsp;
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-1.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-2.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-3.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                    </tr>
-                                                                    <tr class="tr_inner">
-                                                                        <td align="center" valign="top"><a href="#">Antihistamínicos </a></td>
-                                                                        <td align="center" valign="top"><a href="#">Ámpulas</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Jarabes</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3" align="left" valign="middle" class="td_bottom">
-                                                                            <a href="index_products.html" class="other_cat">Ver todos los productos</a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
-                                                        </ul>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
                                         {% else %}
-                                            <ul class="sub_sub">
-                                                <div class="div_sub_sub_menu">
-                                                    <table width="492" border="0"
-                                                           style="border-collapse: collapse; border-spacing: 1px">
-                                                        <tr>
-                                                            <td colspan="3" class="div_title"
-                                                                style="border-bottom:solid 1px #3b732e; height: 29px;">{{ category.0 }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3">&nbsp;  </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img
-                                                                    src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}" width="126"
-                                                                    height="84"/></td>
-                                                            <td width="164" class="td_inner"><img
-                                                                    src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
-                                                                    width="126" height="84"/></td>
-                                                        </tr>
-                                                        <tr class="tr_inner">
-                                                            <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
-                                                            <td align="center" valign="top"><a href="#">Para niños</a></td>
-                                                            <td align="center" valign="top"><a href="#">Anticancerígenos</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3"
-                                                                style="border-top:dotted 1px #3b732e; vertical-align:middle; height: 20px;">
-                                                                &nbsp;
-
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-1.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-2.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-3.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                        </tr>
-                                                        <tr class="tr_inner">
-                                                            <td align="center" valign="top"><a href="#">Antihistamínicos </a></td>
-                                                            <td align="center" valign="top"><a href="#">Ámpulas</a></td>
-                                                            <td align="center" valign="top"><a href="#">Jarabes</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3" align="left" valign="middle" class="td_bottom">
-                                                                <a href="index_products.html" class="other_cat">Ver todos los productos</a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
+                                            <ul>
+                                                <li>
+                                                    <a>AAAA</a>
+                                                </li>
                                             </ul>
                                         {% endif %}
                                     </li>
@@ -244,27 +139,31 @@
 
                         <li>
                             <div class="div_sub_menu">
-                                <a href="#Education"><span>Proveedores exclusivos</span></a>
+                                <a><span>Proveedores exclusivos</span></a>
                             </div>
                             <ul class="sub_suppliers">
                                 <div class="sub_suppliers_div">
                                     <table width="100%" border="0" cellspacing="0" cellpadding="0"
                                            style="border-collapse: collapse; border-spacing: 0px">
                                         <tr>
-                                            <td colspan="3" class="div_title"
-                                                style="border-bottom:solid 1px #3b732e; height: 29px;">Proveedores exclusivos
+                                            <td colspan="4" class="div_title"
+                                                style="border-bottom:solid 1px #3b732e; height: 29px;">Proveedores
+                                                exclusivos
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3">&nbsp;
-
+                                            <td colspan="4">&nbsp;
                                             </td>
                                         </tr>
                                         <tr class="first_line">
                                             <td align="center"><img src="{% static 'images/richet_small.jpg' %}" width="100" height="100"
                                                                     alt=""/></td>
-                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100" height="100" alt=""/></td>
-                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100" height="100" alt=""/></td>
+                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100" height="100" alt=""/>
+                                            </td>
+                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100" height="100" alt=""/>
+                                            </td>
+                                            <td align="center"><img src="{% static 'images/logo_CIMAB.jpg' %}" width="100" height="100" alt=""/>
+                                            </td>
                                         </tr>
                                         <tr class="tr_inner">
                                             <td align="center" valign="top">
@@ -276,15 +175,18 @@
                                             <td align="center" valign="top">
                                                 <a href="#">Korea United Pharm</a>
                                             </td>
+                                            <td align="center" valign="top">
+                                                <a href="#">CIMAB</a>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td valign="top" colspan="3" style="padding-left:0; padding-right:0">
+                                            <td valign="top" colspan="4" style="padding-left:0; padding-right:0">
 
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" align="left" valign="middle" class="td_bottom">
-                                                <a href="#" class="other_cat">Ver todos los proveedores</a>
+                                            <td colspan="4" align="left" valign="middle" class="td_bottom">
+                                                <a href="#" class="other_cat">&nbsp;</a>
                                             </td>
                                         </tr>
                                     </table>
