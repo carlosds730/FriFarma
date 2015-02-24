@@ -20,10 +20,10 @@ class Categories(models.Model):
 
     parent = models.ForeignKey('Categories', verbose_name='parent', related_name='sons', help_text='Category father', null=True, blank=True)
 
-    def __unicode__(self, language='en'):
-        if language == 'es':
-            return self.es_name
-        return self.en_name
+    def __str__(self):
+        if self.en_name:
+            return self.en_name
+        return self.es_name.encode(encoding='utf-8')
 
 
 class Supplier(models.Model):
@@ -38,6 +38,12 @@ class Supplier(models.Model):
     url = models.URLField(verbose_name='url', blank=True)
 
     image = ImageField(verbose_name='Image', upload_to='media', blank=True)
+
+    def __str__(self):
+        if self.en_name:
+            return self.en_name
+        else:
+            return self.es_name.encode(encoding='utf-8')
 
 
 class Client(models.Model):
@@ -78,7 +84,7 @@ class Products(models.Model):
 
     sort_order = models.PositiveIntegerField(verbose_name='Sort order', help_text='Number that represents priority')
 
-    image = ImageField(verbose_name='Image', upload_to='media', blank=True)
+    image = ImageField(verbose_name='Image', upload_to='Products', blank=True)
 
     en_description = models.TextField(verbose_name='English description')
 
@@ -126,10 +132,10 @@ class Products(models.Model):
         self._es_name = stopwords.remove_stopwords(tmp)
         super(Products, self).save(*args, **kwargs)
 
-    def __unicode__(self, language='en'):
-        if language == 'es':
-            return self.es_name
-        return self.en_name
+    def __str__(self):
+        if self.en_name:
+            return self.en_name
+        return self.es_name.encode(encoding='utf-8')
 
 
 languages = (('en', 'English'), ('es', 'Español'))
@@ -149,13 +155,16 @@ class News(models.Model):
 
     language = models.CharField(choices=languages, name='Language', help_text='Language of notice', max_length=20)
 
+    def __str__(self):
+        return self.title.encode(encoding='utf-8')
+
 
 class Pictures(models.Model):
     class Meta:
         verbose_name = 'Picture'
         verbose_name_plural = 'Pictures'
 
-    picture = ImageField(verbose_name='Picture', upload_to='media')
+    picture = ImageField(verbose_name='Picture', upload_to='Pictures')
 
     new = models.ForeignKey('News', verbose_name='notice', related_name='pictures', blank=True, null=True)
 
