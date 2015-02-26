@@ -145,6 +145,17 @@ def process_query(query, stopwords):
     return remove_none(query)
 
 
+def fix_group_terp(x, language):
+    if x.category.parent:
+        if language == 'es':
+            return x.category.parent.es_name + '-' + x.category.es_name
+        return x.category.parent.en_name + '-' + x.category.en_name
+    else:
+        if language == 'es':
+            return x.category.es_name
+        return x.category.en_name
+
+
 def search(request):
     if request.method == 'POST':
         collection = None
@@ -152,13 +163,13 @@ def search(request):
         query = stopwords.word_tokenize(query)
         if request.POST['language'] == 'es':
             query = process_query(query, stopwords.es_stopwords)
-            collection = [(x.es_name, x.es_description, x._es_name, x._es_description) for x in models.Products.objects.all()]
+            collection = [(x.es_name, x.form, x._es_name, x._es_description, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es'), fix_group_terp(x, 'es')) for x in models.Products.objects.all()]
         else:
             query = process_query(query, stopwords.en_stopwords)
-            collection = [(x.en_name, x.en_description, x._en_name, x._en_description) for x in models.Products.objects.all()]
+            collection = [(x.en_name, x.form, x._en_name, x._en_description, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'es'), divide(x.en_presentacion, 'es'), fix_group_terp(x, 'en')) for x in models.Products.objects.all()]
         result = []
         if len(query):
-            result = [fix(query, value[0], value[1]) if match(query, stopwords.word_tokenize(value[2]), stopwords.word_tokenize(value[3])) else None for value in collection]
+            result = [(value[0], value[1], value[4], value[5], value[6], value[7], value[8], value[9], value[10]) if match(query, stopwords.word_tokenize(value[2]), stopwords.word_tokenize(value[3])) else None for value in collection]
 
         if request.POST['language'] == 'es':
             return render(request, 'search.html',
@@ -169,14 +180,15 @@ def search(request):
                               'result': remove_none(result)
                           }
             )
-        return render(request, 'search_en.html',
-                      {
-                          'query': request.POST['query'],
-                          'language': request.POST['language'],
-                          'categories': collection_en,
-                          'result': remove_none(result)
-                      }
-        )
+        else:
+            return render(request, 'search_en.html',
+                          {
+                              'query': request.POST['query'],
+                              'language': request.POST['language'],
+                              'categories': collection_en,
+                              'result': remove_none(result)
+                          }
+            )
     else:
         if request.GET['language'] == 'es':
             return render(request, 'search.html',
@@ -193,6 +205,18 @@ def search(request):
                       })
 
 
+def news(request):
+    if request.method == 'GET':
+        if request.GET['language'] == 'es':
+            return render(request, 'noticias.html', {
+                'categories': collection_es
+            })
+        else:
+            return render(request, 'noticias_en.html', {
+                'categories': collection_en
+            })
+
+
 def change_language(request):
     return HttpResponseRedirect(request.environ['HTTP_REFERER'].split('?')[0] + '?language=' + request.GET['language'])
 
@@ -201,11 +225,13 @@ def company(request):
     if request.method == 'GET':
         if request.GET['language'] == 'es':
             return render(request, 'company.html', {
-                'categories': collection_es
+                'categories': collection_es,
+                'language': 'es'
             })
         else:
             return render(request, 'company_en.html', {
-                'categories': collection_en
+                'categories': collection_en,
+                'language': 'en'
             })
 
 

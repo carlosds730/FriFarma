@@ -124,13 +124,17 @@ class Products(models.Model):
     develop_products = models.BooleanField(verbose_name='Develop Products', help_text='Tag used for mark develop products')
 
     def save(self, *args, **kwargs):
-        self._en_description = stopwords.save_description(self.en_principio_activo, self.en_accion_terapeutica, self.en_presentacion, self.en_concentracion)
-        self._es_description = stopwords.save_description(self.principio_activo, self.accion_terapeutica, self.presentacion, self.concentracion)
+        self._en_description = stopwords.save_description(self.en_principio_activo, self.en_accion_terapeutica, self.en_presentacion, self.en_concentracion, self.form, 'en')
+        self._es_description = stopwords.save_description(self.principio_activo, self.accion_terapeutica, self.presentacion, self.concentracion, self.form, 'es')
         tmp = stopwords.word_tokenize(self.en_name)
         self._en_name = stopwords.remove_stopwords(tmp, 'en')
         tmp = stopwords.word_tokenize(self.es_name)
         self._es_name = stopwords.remove_stopwords(tmp)
         super(Products, self).save(*args, **kwargs)
+        import views
+
+        views.collection_es = views.get_collection('es')
+        views.collection_en = views.get_collection('en')
 
     def __str__(self):
         if self.en_name:

@@ -19,8 +19,10 @@ def word_tokenize(text):
     return str(text.encode('utf-8')).lower().split()
 
 
-def save_description(principio_activo, accion_terapeutica, concentracion, presentacion):
-    return 'principio activo: ' + principio_activo.encode('utf-8') + ' \n' + 'acción terapéutica: ' + accion_terapeutica.encode('utf-8') + ' \n' + 'concentración: ' + concentracion.encode('utf-8') + ' \n' + 'presentación: ' + presentacion.encode('utf-8') + ' \n'
+def save_description(principio_activo, accion_terapeutica, concentracion, presentacion, form, language):
+    if language == 'es':
+        return 'principio activo: ' + principio_activo.encode('utf-8') + ' \n' + 'acción terapéutica: ' + accion_terapeutica.encode('utf-8') + ' \n' + 'concentración: ' + concentracion.encode('utf-8') + ' \n' + 'presentación: ' + presentacion.encode('utf-8') + ' \n' + 'Método: ' + form.encode('utf-8') + ' \n'
+    return 'Active Ingredient: ' + principio_activo.encode('utf-8') + ' \n' + 'therapeutic action: ' + accion_terapeutica.encode('utf-8') + ' \n' + 'concentration: ' + concentracion.encode('utf-8') + ' \n' + 'presentation: ' + presentacion.encode('utf-8') + ' \n' + 'Method: ' + form.encode('utf-8') + ' \n'
 
 
 def remove_stopwords(collection, language='es'):

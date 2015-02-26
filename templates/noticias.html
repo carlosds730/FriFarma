@@ -1,0 +1,56 @@
+{% extends 'index_new.html' %}
+{% load staticfiles %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/jqx.base.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/style_products.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/menu_products.css' %}" type="text/css"/>
+    <script type="text/javascript" src="{% static 'js/jquery-1.6.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/atooltip.jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.jqtransform.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jqxcore.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jqxmenu.js' %}"></script>
+{% endblock %}
+{% block container %}
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            try {
+                switch (theme) {
+                    case 'shinyblack':
+                        $($.find('.megamenu-ul li a:link')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#fff');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#fff');
+                        $($.find('.jqx-menuitem-header')).css('color', '#fff');
+                        break;
+                    default:
+                        $($.find('.megamenu-ul li a:link')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:hover')).css('color', '#2d628a');
+                        $($.find('.megamenu-ul li a:visited')).css('color', '#2d628a');
+                        $($.find('.jqx-menuitem-header')).css('color', '#2d628a');
+                        break;
+                }
+            }
+            catch (error) {
+            }
+
+            // Create a jqxMenu
+            $("#jqxMenu").jqxMenu({
+                width: '1024px',
+                height: '50px',
+                autoOpen: true,
+                autoCloseOnMouseLeave: true,
+                showTopLevelArrows: false
+            });
+            $("#jqxMenu").css('visibility', 'visible');
+            $(".buyonline").jqxLinkButton({width: 150, height: 25});
+            $(".jqx-menu-search").jqxButton({width: 60, height: 17});
+        });
+    </script>
+{% endblock %}
