@@ -1,5 +1,7 @@
 # -*- coding: utf8 -*-
 
+import datetime
+
 from django.db import models
 from sorl.thumbnail import ImageField
 
@@ -147,17 +149,17 @@ languages = (('en', 'English'), ('es', 'Español'))
 
 class News(models.Model):
     class Meta:
-        verbose_name = "Notice"
+        verbose_name = "News"
         verbose_name_plural = 'News'
         ordering = ['date']
 
-    title = models.CharField(verbose_name='Title', help_text='The title of the notice', max_length=200)
+    title = models.CharField(verbose_name='Title', help_text='The title of the news', max_length=200)
 
-    description = models.TextField(verbose_name='description', help_text='The body of notice')
+    description = models.TextField(verbose_name='description', help_text='The body of news')
 
-    date = models.DateField(verbose_name='Date', help_text='Date of notice')
+    date = models.DateField(verbose_name='Date', help_text='Date of news', default=datetime.datetime.now())
 
-    language = models.CharField(choices=languages, name='Language', help_text='Language of notice', max_length=20)
+    language = models.CharField(choices=languages, name='Language', help_text='Language of news', max_length=20)
 
     def __str__(self):
         return self.title.encode(encoding='utf-8')
