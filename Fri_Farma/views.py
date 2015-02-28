@@ -215,7 +215,7 @@ def ajax_news(request, id):
 
 def news(request):
     if request.method == 'GET':
-        _news = [(x.id, x.title, x.date) for x in models.News.objects.all()]
+        _news = [(x.id, x.title, x.date, x.description) for x in models.News.objects.all()]
         if request.GET['language'] == 'es':
             return render(request, 'noticias.html', {
                 'categories': collection_es,

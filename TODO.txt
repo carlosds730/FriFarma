@@ -1,2 +1,4 @@
-TODO: Añadir las fotos a los productos
-TODO: Revisar los nombres iguales y ponerles lo q lo diferencia
+TODO: Añadir las fotos a los productos.
+TODO: Revisar los nombres iguales y ponerles lo q lo diferencia.
+
+TODO: Arreglar los colores de las letras. Están horribles.

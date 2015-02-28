@@ -151,7 +151,7 @@ class News(models.Model):
     class Meta:
         verbose_name = "News"
         verbose_name_plural = 'News'
-        ordering = ['date']
+        ordering = ['-date']
 
     title = models.CharField(verbose_name='Title', help_text='The title of the news', max_length=200)
 
@@ -171,6 +171,10 @@ class Pictures(models.Model):
         verbose_name_plural = 'Pictures'
 
     picture = ImageField(verbose_name='Picture', upload_to='Pictures')
+
+    es_description = models.CharField(verbose_name='Description in Spanish', help_text='The description of the picture in spanish', max_length=200, blank=True, null=True)
+
+    en_description = models.CharField(verbose_name='Description in Ensglish', help_text='The description of the picture in english', max_length=200, blank=True, null=True)
 
     new = models.ForeignKey('News', verbose_name='notice', related_name='pictures', blank=True, null=True)
 
