@@ -4,6 +4,7 @@ import datetime
 
 from django.db import models
 from sorl.thumbnail import ImageField
+from sorl.thumbnail import get_thumbnail
 
 import stopwords
 
@@ -178,7 +179,9 @@ class Pictures(models.Model):
 
     new = models.ForeignKey('News', verbose_name='notice', related_name='pictures', blank=True, null=True)
 
-
+    def get_width_top(self):
+        new_image = get_thumbnail(self.picture, '200x250')
+        return new_image, new_image.width, new_image.height
 
 
 

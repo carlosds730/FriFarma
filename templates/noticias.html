@@ -34,10 +34,8 @@
                             </div>
                             <div id="news-container-{{ value.0 }}" class="news-container">
                                 <div id="news-content-{{ value.0 }}" class="news-content" style="display: inline-block">
-                                    <p>
-                                        <img src="#">
-                                        {{ value.3|safe }}
-                                    </p>
+                                    <img src="#">
+                                    {{ value.3|safe }}
                                 </div>
                             </div>
                         {% endfor %}
@@ -66,7 +64,7 @@
                     $("#news-container-" + id).slideDown(interval, "linear");
                     var the_div = document.getElementById("news-container-" + id);
                     the_div.id = "news-container-" + id + "_open";
-                    var the_img = $("#news-content-" + id + "> p > img")[0];
+                    var the_img = $("#news-content-" + id + ">  img")[0];
                     the_img.src = data['image'];
                     the_img.style.float = "left";
                 });
