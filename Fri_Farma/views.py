@@ -210,7 +210,7 @@ def ajax_news(request, id):
 
     if request.method == 'POST':
         new = models.News.objects.get(pk=int(id))
-        return HttpResponse(json.dumps({'id': new.pk, 'title': new.title, 'date': str(new.date)}, encoding="utf-8"), 'json')
+        return HttpResponse(json.dumps({'id': new.pk, 'title': new.title, 'date': str(new.date), 'description': new.description, 'image': new.pictures.all()[0].picture.url}, encoding="utf-8"), 'json')
 
 
 def news(request):

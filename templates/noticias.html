@@ -25,15 +25,18 @@
                     <div class="news">
                         <h1>Noticias</h1>
                         {% for value in news %}
-                            <div onclick="testing_ajax({{ value.0 }})">
+                            <div id="news-title-{{ value.0 }}" class="news-title" onclick="testing_ajax({{ value.0 }})">
                                 <h3>{{ value.1 }}</h3>
+                            </div>
+                            <div id="news-container-{{ value.0 }}" style="display: none">
+                                <div id="news-content-{{ value.0 }}" class="news-content" style="display: inline-block">
+                                    <p></p>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
                 </div>
-                <div>
-                    <p>HERE goes the content</p>
-                </div>
+
             </div>
         </div>
     </section>
@@ -83,13 +86,31 @@
                 }
             }
         });
+
+        var interval = 300;
+
         function testing_ajax(id) {
-            var request = $.post("ajax/" + id + "/", {});
-            request.done(function (data) {
-                $.each(data, function (key, value) {
-                    alert(key + ': ' + value);
+            var a = document.getElementById("news-container-" + id + "_open");
+            if (a) {
+                $("#news-container-" + id + "_open").slideUp(interval, "linear");
+                document.getElementById("news-title-" + id).onclick = function () {
+                    $("#news-container-" + id + "_open").slideToggle(interval, "linear");
+                };
+            }
+            else {
+                var request = $.post("ajax/" + id + "/", {});
+                request.done(function (data) {
+                    var the_img = document.createElement("img");
+                    the_img.src = data['image'];
+                    the_img.style.float = "left";
+                    var thing = $("#news-content-" + id + "> p")[0];
+                    thing.appendChild(the_img);
+                    thing.innerHTML += data['description'];
+                    $("#news-container-" + id).slideDown(interval, "linear");
+                    var the_div = document.getElementById("news-container-" + id);
+                    the_div.id = "news-container-" + id + "_open";
                 });
-            });
+            }
         }
 
     </script>
