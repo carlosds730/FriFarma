@@ -15,7 +15,7 @@
     position: relative;
     left: 0;
     top: 0;
-    background: #ededed;
+    background: #EBF4E6;
 }
 
 #footer {
@@ -48,6 +48,7 @@
 #company-content {
     width: 95%;
     margin: 0 auto;
+    height: 100%;
 }
 
 #company-content a, p {
@@ -55,7 +56,7 @@
     font-style: normal;
     text-align: justify;
     line-height: normal;
-    color: #5c5d5d;
+    color: #548953;
 }
 
 #company-content img {
@@ -70,7 +71,7 @@
     font-family: Calibri, sans-serif;
     font-style: normal;
     font-weight: lighter;
-    color: #2DB200;
+    color: #B21400;
 }
 
 .company-content-text h1 {
@@ -131,6 +132,10 @@
     margin-top: 10px;
 }
 
+.products-product-text h5 {
+    color: #2DB200;;
+}
+
 .products-product-text h4 {
     color: #217C02;
     font-size: 16pt;
@@ -155,11 +160,24 @@
 .products-product-concentration-table-concentration {
     float: left;
     width: 30%;
-    margin-right: 15px;
 }
 
 .products-product-concentration-table-presentation {
     float: left;
-    width: 60%;
+    width: 70%;
+}
+
+.news {
+
+}
+
+.news h3 {
+    margin-bottom: 10px;
+    color: #548953;
+}
+
+.news a:link {
+    text-decoration: none;
+    text-underline-style: none;
 }
 

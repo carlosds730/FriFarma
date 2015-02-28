@@ -1,7 +1,7 @@
 # Create your views here.
 # -*- coding: utf8 -*-
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.datastructures import SortedDict
 
 import models
@@ -205,16 +205,31 @@ def search(request):
                       })
 
 
+def ajax_news(request, id):
+    import json
+
+    if request.method == 'POST':
+        new = models.News.objects.get(pk=int(id))
+        return HttpResponse(json.dumps({'id': new.pk, 'title': new.title, 'date': str(new.date)}, encoding="utf-8"), 'json')
+
+
 def news(request):
     if request.method == 'GET':
+        _news = [(x.id, x.title, x.date) for x in models.News.objects.all()]
         if request.GET['language'] == 'es':
             return render(request, 'noticias.html', {
-                'categories': collection_es
+                'categories': collection_es,
+                'language': 'es',
+                'news': _news
             })
         else:
             return render(request, 'noticias_en.html', {
-                'categories': collection_en
+                'categories': collection_en,
+                'language': 'en',
+                'news': _news
             })
+    else:
+        print "hay q joderse"
 
 
 def change_language(request):

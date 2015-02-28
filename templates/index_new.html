@@ -119,11 +119,12 @@
                                         {% if category.1 %}
                                             <ul style="width: 180px">
                                                 {% for key, value in values.items %}
-                                                    <li><a href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a>
+                                                    <li>
+                                                        <span><a href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a></span>
                                                         <ul>
                                                             {% for v in value %}
                                                                 <li>
-                                                                    <a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a>
+                                                                    <span><a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
                                                                 </li>
                                                             {% endfor %}
                                                         </ul>
@@ -134,7 +135,7 @@
                                             <ul>
                                                 {% for v in values %}
                                                     <li>
-                                                        <a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a>
+                                                        <span><a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
