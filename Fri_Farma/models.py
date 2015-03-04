@@ -183,6 +183,16 @@ class Pictures(models.Model):
         new_image = get_thumbnail(self.picture, '200x250')
         return new_image, new_image.width, new_image.height
 
+    def get_width_top_exp(self, sizes, need_image, lang):
+        new_image = get_thumbnail(self.picture, sizes)
+        if need_image:
+            return new_image, new_image.width, new_image.height
+        else:
+            if lang:
+                return new_image.url, new_image.width, new_image.height, self.en_description
+            else:
+                return new_image.url, new_image.width, new_image.height, self.es_description
+
 
 
 

@@ -15,7 +15,7 @@
     position: relative;
     left: 0;
     top: 0;
-    background: #ededed;
+    background: #EBF4E6;
 }
 
 #footer {
@@ -69,10 +69,9 @@
 #company-content a, p {
     font-family: Calibri, serif;
     font-style: normal;
-    /*font-size: 12pt;*/
     text-align: justify;
     line-height: normal;
-    color: #5c5d5d;
+    color: #548953;
 }
 
 #company-content img {

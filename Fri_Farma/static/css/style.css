@@ -15,7 +15,7 @@
     position: relative;
     left: 0;
     top: 0;
-    background: #ededed;
+    background: #EBF4E6;
 }
 
 #footer {
@@ -68,11 +68,11 @@
 .text-two {
     font-family: Calibri, serif;
     font-style: normal;
-    font-size: 12pt;
-    font-weight: lighter;
     text-align: justify;
     line-height: normal;
-    color: #5c5d5d;
+    color: #548953;
+    font-size: 12pt;
+    font-weight: lighter;
     margin-bottom: 10px;
     vertical-align: top;
 }
@@ -97,7 +97,7 @@
 }
 
 .main_products td {
-    border-bottom: 25px solid #ededed;
+    border-bottom: 25px solid #EBF4E6;
 }
 
 .separator_line {

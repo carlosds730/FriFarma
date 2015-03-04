@@ -60,5 +60,25 @@ function show_image(node) {
     $("#big_div").fadeIn("slow");
 }
 
+function prep_the_pictures(id, info) {
+    var image_container = document.getElementById("demo" + id);
+    for (var i = 0; i < info[0].length; i++) {
+        var divv = document.createElement("div");
+        divv.className = "item";
+        divv.setAttribute("data-w", info[i][1]);
+        divv.setAttribute("data-h", info[i][2]);
+        divv.onclick = function () {
+            show_image(this);
+        };
+        var img = document.createElement("img");
+        img.src = info[i][0];
+        var tag = document.createElement("a");
+        tag.innerHTML = info[i][3];
+        divv.appendChild(img);
+        divv.appendChild(tag);
+        image_container.appendChild(divv);
+    }
+}
+
 
 

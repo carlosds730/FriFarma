@@ -210,7 +210,10 @@ def ajax_news(request, id):
 
     if request.method == 'POST':
         new = models.News.objects.get(pk=int(id))
-        return HttpResponse(json.dumps({'image': new.pictures.all()[0].get_width_top()[0].url}, encoding="utf-8"), 'json')
+
+        dicc = [x.get_width_top_exp('300x150', False, False) for x in new.pictures.all()]
+
+        return HttpResponse(json.dumps({'image': new.pictures.all()[0].get_width_top()[0].url, 'images': dicc[1:]}, encoding="utf-8"), 'json')
 
 
 def news(request):

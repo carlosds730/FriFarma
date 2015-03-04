@@ -199,3 +199,7 @@
     display: none;
     border-bottom: 1px solid lightgray;
 }
+
+.image-gallery {
+    border-bottom: 10px solid transparent;
+}

@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="{% static 'css/jqx.base.css' %}" type="text/css" media="all">
     <link rel="stylesheet" href="{% static 'css/style_products.css' %}" type="text/css" media="all">
     <link rel="stylesheet" href="{% static 'css/my_style.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'flex_images/jquery.flex-images.css' %}" type="text/css">
     <link rel="stylesheet" href="{% static 'css/menu_products.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'css/company.css' %}" type="text/css">
     <script type="text/javascript" src="{% static 'js/jquery-1.6.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/atooltip.jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.jqtransform.js' %}"></script>
@@ -16,7 +18,10 @@
     <script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jqxcore.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jqxmenu.js' %}"></script>
+    <script type="text/javascript" src="{% static 'flex_images/jquery.flex-images.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/ajax_prep.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jq.js' %}"></script>
+
 {% endblock %}
 {% block container %}
     {#    TODO: Image galleries#}
@@ -37,6 +42,15 @@
                                     <img src="#">
                                     {{ value.3|safe }}
                                 </div>
+                                <div id="new-image-gallery-{{ value.0 }}">
+                                    <div>
+                                        <h1 style="text-align: center">Galería de Fotos</h1>
+                                    </div>
+                                    <div class="image-gallery">
+                                        <div id="demo{{ value.0 }}" class="flex-images">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
@@ -47,7 +61,11 @@
 {% endblock %}
 {% block scripts %}
     <script type="text/javascript">
-        var interval = 300;
+        var interval = 500;
+
+        $(".news-container:last").css("border-bottom", "0px solid white");
+        $(".news-content p:last-child").css("margin-bottom", "0px");
+
         function testing_ajax(id) {
             var a = document.getElementById("news-container-" + id + "_open");
             if (a) {
@@ -59,14 +77,23 @@
             else {
                 var request = $.post("ajax/" + id + "/", {});
                 request.done(function (data) {
-                    {#                    var thing = $("#news-content-" + id + "> p")[0];#}
-                    {#                    thing.innerHTML += data['description'];#}
                     $("#news-container-" + id).slideDown(interval, "linear");
                     var the_div = document.getElementById("news-container-" + id);
                     the_div.id = "news-container-" + id + "_open";
                     var the_img = $("#news-content-" + id + ">  img")[0];
                     the_img.src = data['image'];
                     the_img.style.float = "left";
+                    if (data['images'].length > 0) {
+                        prep_the_pictures(id, data['images']);
+                        $("#demo" + id).flexImages({rowHeight: 151});
+                    }
+                    else {
+                        var node = document.getElementById("new-image-gallery-" + id);
+                        if (node.parentNode) {
+                            node.parentNode.removeChild(node);
+                        }
+                        $("#news-content-" + id + " p:last-child").css("margin-bottom", "10px");
+                    }
                 });
             }
         }
@@ -105,5 +132,9 @@
             $(".buyonline").jqxLinkButton({width: 150, height: 25});
             $(".jqx-menu-search").jqxButton({width: 60, height: 17});
         });
+    </script>
+
+    <script type="text/javascript">
+        pictures();
     </script>
 {% endblock %}
