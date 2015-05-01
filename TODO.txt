@@ -1,4 +1,6 @@
-TODO: Añadir las fotos a los productos.
-TODO: Revisar los nombres iguales y ponerles lo q lo diferencia.
-
-TODO: Arreglar los colores de las letras. Están horribles.
+TODO: Añadir las fotos a los productos. (en cuanto estén)
+DONE: Revisar los nombres iguales y ponerles lo q lo diferencia.
+DONE: Arreglar los colores de las letras. Están horribles.
+TODO: Arreglar la imagen de cabecera (bajarle la opacidad a la imagen de background de "banner_top").
+TODO: Poner un verde más clarito en el menú y en el footer (es cambiar "background_nav" y "background_footer").
+TODO: Arreglar la foto de la fachada de la  compañía (C:\Users\Carlos\Documents\Work\FriFarma\fotos\trabajadas\Fachada_with logo.psd)

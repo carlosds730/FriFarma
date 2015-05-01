@@ -15,24 +15,25 @@
     position: relative;
     left: 0;
     top: 0;
-    background: #EBF4E6;
+    background: #FAFFF8;
 }
 
 #footer {
     height: 72px;
     padding-top: 0;
-    background-image: url("../images/background_footer.jpg");
+    /*background-image: url("../images/background_footer.jpg");*/
+    background: linear-gradient(to bottom, rgb(113, 192, 67), rgb(56, 133, 55));
     text-align: center;
 }
 
 #footer p {
     color: #ffffff;
     line-height: 20px;
-    text-align: center;
     margin-bottom: 0;
     margin-top: 0;
     font-family: Calibri, "Calibri Light", sans-serif;
     font-size: 12px;
+    text-align: center;
 }
 
 #p1 {

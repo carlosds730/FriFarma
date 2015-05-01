@@ -15,13 +15,15 @@
     position: relative;
     left: 0;
     top: 0;
-    background: #EBF4E6;
+    /*background: #FAFFF8;*/
+    background: #E9F4E7;
 }
 
 #footer {
     height: 72px;
     padding-top: 0;
-    background-image: url("../images/background_footer.jpg");
+    /*background-image: url("../images/background_footer.jpg");*/
+    background: linear-gradient(to bottom, rgb(113, 192, 67), rgb(56, 133, 55));
     text-align: center;
 }
 
@@ -32,6 +34,7 @@
     margin-top: 0;
     font-family: Calibri, "Calibri Light", sans-serif;
     font-size: 12px;
+    text-align: center;
 }
 
 #p1 {
@@ -70,7 +73,7 @@
     font-style: normal;
     text-align: justify;
     line-height: normal;
-    color: #548953;
+    color: #285526;
     font-size: 12pt;
     font-weight: lighter;
     margin-bottom: 10px;
@@ -97,7 +100,8 @@
 }
 
 .main_products td {
-    border-bottom: 25px solid #EBF4E6;
+    /*border-bottom: 25px solid #FAFFF8;*/
+    border-bottom: 25px solid #E9F4E7;
 }
 
 .separator_line {

@@ -903,8 +903,8 @@
     border: none;
     height: 50px;
     vertical-align: middle;
-    /*background: linear-gradient(to bottom, rgb(0, 146, 0), rgb(0, 45, 0));*/
-    background-image: url('../images/background_nav.jpg');
+    background: linear-gradient(to bottom, rgb(115, 191, 67), rgb(55, 134, 51));
+    /*background-image: url('../images/background_nav.jpg');*/
     padding: 0px 0px;
 }
 
@@ -3208,7 +3208,7 @@ of the horizontal scrollbar.*/
     font-style: normal;
     font-size: 13px;
     border-color: #c7c7c7;
-    background: #fff;
+    background: #FAFFF8;
 }
 
 /*applied to header areas. Tabs, Menu, Window, Calendar.*/
@@ -3234,6 +3234,7 @@ of the horizontal scrollbar.*/
 
 .jqx-fill-state-hover {
     background: green;
+    color: #ffffff;
 }
 
 .jqx-fill-state-hover a {
@@ -3242,6 +3243,7 @@ of the horizontal scrollbar.*/
 
 .jqx-fill-state-pressed {
     background: green;
+    color: #ffffff;
 }
 
 .jqx-fill-state-pressed a {
