@@ -21,7 +21,7 @@ class AdminNews(AdminImageMixin, admin.ModelAdmin):
 
 class AdminProducts(AdminImageMixin, admin.ModelAdmin):
     filter_horizontal = ('suppliers',)
-    fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers']
+    # fields = ['en_name', 'es_name', 'en_description', 'es_description', 'sort_order', 'image', 'url', 'develop_products', 'category', 'suppliers']
     list_display = ['es_name', 'en_name', 'develop_products']
 
 

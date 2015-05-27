@@ -110,128 +110,33 @@
                         </li>
                         <li>
                             <div class="div_sub_menu">
-                                <a href="#Education"><span>Products</span></a>
+                                <a href="/categories/?language=en"><span>Products</span></a>
                             </div>
-                            <ul>
+                            <ul style="width: 170px">
                                 {% for category, values in categories.items %}
                                     <li><a href="/categories/{{ category.2 }}/?language=en">{{ category.0 }}</a>
                                         {% if category.1 %}
-                                            <ul>
+                                            <ul style="width: 180px">
                                                 {% for key, value in values.items %}
-                                                    <li><a href="/categories/{{ key.1 }}/?language=en">{{ key.0 }}</a>
-                                                        <ul class="sub_sub">
-                                                            <div class="div_sub_sub_menu">
-                                                                <table width="492" border="0"
-                                                                       style="border-collapse: collapse; border-spacing: 1px">
-                                                                    <tr>
-                                                                        <td colspan="3" class="div_title"
-                                                                            style="border-bottom:solid 1px #3b732e; height: 29px;">{{ key }}
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3">&nbsp;  </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img
-                                                                                src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}" width="126"
-                                                                                height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img
-                                                                                src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
-                                                                                width="126" height="84"/></td>
-                                                                    </tr>
-                                                                    <tr class="tr_inner">
-                                                                        <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Para niños</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Anticancerígenos</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3"
-                                                                            style="border-top:dotted 1px #3b732e; vertical-align:middle; height: 20px;">
-                                                                            &nbsp;
-
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-1.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-2.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                        <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-3.jpg' %}"
-                                                                                                              width="126" height="84"/></td>
-                                                                    </tr>
-                                                                    <tr class="tr_inner">
-                                                                        <td align="center" valign="top"><a href="#">Antihistamínicos </a></td>
-                                                                        <td align="center" valign="top"><a href="#">Ámpulas</a></td>
-                                                                        <td align="center" valign="top"><a href="#">Jarabes</a></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td colspan="3" align="left" valign="middle" class="td_bottom">
-                                                                            <a href="index_products.html" class="other_cat">Ver todos los productos</a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
+                                                    <li>
+                                                        <span><a href="/categories/{{ key.1 }}/?language=en">{{ key.0 }}</a></span>
+                                                        <ul>
+                                                            {% for v in value %}
+                                                                <li>
+                                                                    <span><a href="/products/{{ v.1 }}/?language=en">{{ v.0 }}</a></span>
+                                                                </li>
+                                                            {% endfor %}
                                                         </ul>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
                                         {% else %}
-                                            <ul class="sub_sub">
-                                                <div class="div_sub_sub_menu">
-                                                    <table width="492" border="0"
-                                                           style="border-collapse: collapse; border-spacing: 1px">
-                                                        <tr>
-                                                            <td colspan="3" class="div_title"
-                                                                style="border-bottom:solid 1px #3b732e; height: 29px;">{{ category.0 }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3">&nbsp;  </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/_DSC0067.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img
-                                                                    src="{% static 'images/farmacos/glowcap-pill-bottle-cap.jpg' %}" width="126"
-                                                                    height="84"/></td>
-                                                            <td width="164" class="td_inner"><img
-                                                                    src="{% static 'images/farmacos/product-label-design-yellow-diamonds-bottle.jpg' %}"
-                                                                    width="126" height="84"/></td>
-                                                        </tr>
-                                                        <tr class="tr_inner">
-                                                            <td align="center" valign="top"><a href="#">Antidepresivos</a></td>
-                                                            <td align="center" valign="top"><a href="#">Para niños</a></td>
-                                                            <td align="center" valign="top"><a href="#">Anticancerígenos</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3"
-                                                                style="border-top:dotted 1px #3b732e; vertical-align:middle; height: 20px;">
-                                                                &nbsp;
-
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-1.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-2.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                            <td width="164" class="td_inner"><img src="{% static 'images/farmacos/picture-3.jpg' %}"
-                                                                                                  width="126" height="84"/></td>
-                                                        </tr>
-                                                        <tr class="tr_inner">
-                                                            <td align="center" valign="top"><a href="#">Antihistamínicos </a></td>
-                                                            <td align="center" valign="top"><a href="#">Ámpulas</a></td>
-                                                            <td align="center" valign="top"><a href="#">Jarabes</a></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colspan="3" align="left" valign="middle" class="td_bottom">
-                                                                <a href="index_products.html" class="other_cat">Ver todos los productos</a>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
+                                            <ul>
+                                                {% for v in values %}
+                                                    <li>
+                                                        <span><a href="/products/{{ v.1 }}/?language=en">{{ v.0 }}</a></span>
+                                                    </li>
+                                                {% endfor %}
                                             </ul>
                                         {% endif %}
                                     </li>
@@ -336,14 +241,14 @@
             <div class="main">
                 <div class="wrapper" style="text-align: -webkit-center">
                     <div id="slider">
-                        <img src="{% static 'images/banner_03.jpg' %}" alt=""
-                             title="<strong>Fármacos</strong>">
                         <img src="{% static 'images/banner_01.jpg' %}" alt=""
-                             title="<strong>Productos odontológios</strong><span>">
+                             title="<strong>Laboratorios RICHET</strong><span>">
+                        <img src="{% static 'images/banner_02.jpg' %}" alt=""
+                             title="<strong>BDR Pharmaceuticals</strong><span>">
+                        <img src="{% static 'images/banner_03.jpg' %}" alt=""
+                             title="<strong>Korea United Pharm</strong><span>">
                         <img src="{% static 'images/banner_04.jpg' %}" alt=""
-                             title="<strong>Equipos médicos</strong><span>">
-                        <img src="{% static 'images/banner_05.jpg' %}" alt=""
-                             title="<strong>Veterinaria</strong><span>">
+                             title="<strong>CIMAB s.a.</strong><span>">
                     </div>
                 </div>
             </div>
@@ -353,25 +258,19 @@
                 <table id="table_thecontent" width="100%" border="0" cellpadding="0px" cellspacing="0px"
                        style="border-collapse:collapse; border-spacing:0px">
                     <tr id="top_separator">
-                        <td colspan="9">&nbsp;
+                        <td colspan="6">&nbsp;
                         </td>
                     </tr>
                     <tr style="margin-top: 20px;">
                         <td width="20" rowspan="3" id="left_border">&nbsp;</td>
-                        <td width="303" class="text-one">Who we are?</td>
+                        <td width="662" class="text-one">Who we are?</td>
                         <td width="18">&nbsp;</td>
                         <td width="18">&nbsp;</td>
-                        <td width="303" class="text-one">What we do?</td>
-                        <td width="18">&nbsp;</td>
-                        <td width="18">&nbsp;</td>
-                        <td class="text-one">Main Products</td>
+                        <td class="text-one">Main products</td>
                         <td width="20" rowspan="3" id="right_border">&nbsp;</td>
                     </tr>
                     <tr>
-                        <td class="td_image"><img src="{% static 'images/ourstaff1.gif' %}" width="303" height="202" alt=""/></td>
-                        <td rowspan="2" class="separator_line">&nbsp;</td>
-                        <td rowspan="2">&nbsp;</td>
-                        <td class="td_image"><img src="{% static 'images/ourpatients.gif' %}" width="303" height="202" alt=""/></td>
+                        <td class="td_image"><img src="{% static 'images/medicamentos grupo_eng.jpg' %}" alt=""/></td>
                         <td rowspan="2" class="separator_line">&nbsp;</td>
                         <td rowspan="2">&nbsp;</td>
                         <td rowspan="2" valign="top">
@@ -379,49 +278,36 @@
                                    style="border-collapse:collapse; border-spacing:0px">
                                 <tr>
                                     <td width="150"><img
-                                            src="{% static 'images/product-label-design-yellow-diamonds-bottle.jpg' %}" width="150"
+                                            src="{% static 'images/productos/Surfactante B - 2.jpg' %}" width="150"
                                             height="120" alt=""/></td>
-                                    <td width="156" valign="top"><a class="text-three" href="#">Nombre</a>
+                                    <td width="156" valign="top"><a href="/products/1/?language=es" class="text-three">Surfactante B</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><img src="{% static 'images/TAC.jpg' %}" width="150" height="120" alt=""/></td>
-                                    <td valign="top"><a class="text-three" href="#">Nombre</a></td>
+                                    {#                                    <td><img src="{% static 'images/productos/Dacarbazine copy.jpg' %}" width="150" height="120" alt=""/></td>#}
+                                    <td><img src="{% static 'images/productos/Dacarbazine.jpg' %}" width="150" height="120" alt=""/></td>
+                                    <td valign="top"><a class="text-three" href="/products/44/?language=es">Dacarbazine</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src="{% static 'images/small.jpg' %}" width="150" height="120" alt=""/></td>
-                                    <td valign="top"><a class="text-three" href="#">Nombre</a></td>
+                                    <td><img src="{% static 'images/productos/Gemcitabina.jpg' %}" width="150" height="120" alt=""/></td>
+                                    {#                                    <td><img src="{% static 'images/productos/Gemcitabina copy.jpg' %}" width="150" height="120" alt=""/></td>#}
+                                    <td valign="top"><a class="text-three" href="/products/38/?language=es">Gemcitabina</a></td>
                                 </tr>
-                                <!--<tr>-->
-                                <!--<td><img src="images/TAC.jpg" width="150" height="100" alt=""/></td>-->
-                                <!--<td valign="top"><a class="text-three" href="#">Nombre</a></td>-->
-                                <!--</tr>-->
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td valign="top">
-                            <p class="text-two">Frifarma S.R.L. es una empresa distribuidora de especialidades
-                                farmacéuticas establecida en la República Dominicana desde el año 2005.
+                            <p class="text-two">Frifarma SRL is a pharmaceutical distributor established in Dominican Republic since 2006. Is multinational company formed with specialist and executives from Dominican Republic and other countries, with the ability to handle the complex dynamics of the local pharmaceutical market. The sales department is leaded by a group experimented specialist in
+                                pharmaceutical marketing.
                             </p>
 
-                            <p class="text-two" style="margin-bottom:5px">El principal valor de Frifarma S.R.L. lo constituye su
-                                capital humano, por el alto estándar de sus profesionales. Es una empresa plurinacional
-                                conformada por especialistas y directivos de República Dominicana y otros países.
+                            <p class="text-two">We are the lead distributor in the segments of attention to grave patients, infectology, oncology and neonatology. Our set of clients includes the most prestigious health institutions of the country.
                             </p>
-                        </td>
-                        <td valign="top">
-                            <p class="text-two">La proyección estratégica de Frifarma S.R.L. se basa en
-                                continuar fortaleciendo su presencia en los nichos actuales, ampliar sus clientes y su
-                                portafolio con productos de última generación, incluyendo los biosimilares.</p>
-
-                            <p class="text-two" style="margin-bottom:5px">Además, se propone ampliar la cartera de proveedores y
-                                de servicios que presta en el área de la salud, orientados a poner a disposición de la medicina
-                                dominicana tratamientos más efectivos y al más bajo costo posible.</p>
                         </td>
                     </tr>
                     <tr id="horizontal_separator">
-                        <td colspan="9">&nbsp;
+                        <td colspan="6">&nbsp;
                         </td>
                     </tr>
                 </table>
@@ -433,9 +319,9 @@
             <p style="padding-top:12px" id="p1">Frifarma S.A. Calle Hatuey # 196. "Los Cacicazgos" Santo Domingo. República
                 Dominicana. </p>
 
-            <p id="p2"><strong> Tel. Celular: 1809 9390343 Tel. Oficina: 1809 4829958 Fax: 1809
+            <p id="p2"><strong> Teléfono : 1809 4829958 Fax: 1809
                 4820300 / email: <a style="text-decoration:none; color:#ffffff"
-                                    href="mailto:campani.frifarma@yahoo.it">campani.frifarma@yahoo.it</a></strong>
+                                    href="mailto:info@frifarma.com">info@frifarma.com</a></strong>
             </p>
         </footer>
     {% endblock %}
