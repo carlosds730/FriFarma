@@ -62,7 +62,7 @@ function show_image(node) {
 
 function prep_the_pictures(id, info) {
     var image_container = document.getElementById("demo" + id);
-    for (var i = 0; i < info[0].length; i++) {
+    for (var i = 0; i < info.length; i++) {
         var divv = document.createElement("div");
         divv.className = "item";
         divv.setAttribute("data-w", info[i][1]);

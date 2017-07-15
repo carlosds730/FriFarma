@@ -126,6 +126,38 @@ class Products(models.Model):
 
     develop_products = models.BooleanField(verbose_name='Develop Products', help_text='Tag used for mark develop products')
 
+    def form_trans(self):
+        print(self.form)
+        if self.form == u'Suspensión intratraqueal':
+            return "Intratracheal Suspension"
+
+        if self.form == u'comprimidos recubiertos':
+            return "Tablets"
+
+        if self.form == u'Cápsulas':
+            return "Capsules"
+
+        if self.form.lower() == u'solución inyectable':
+            return "Inyectable"
+
+        if self.form == u'Polvo liofilizado':
+            return "Lyophilized Powder"
+
+        if self.form == u'Polvo para solución para infusión':
+            return "Powder for infusion"
+
+        if self.form == u'Polvo liofilizado para solución inyectable':
+            return "Lyophilized Powder for inyectable solution"
+
+        if self.form == u'Tableta':
+            return "Tablets"
+
+        if self.form == u'Liofilizado para Inyección':
+            return "Lyophilized for inyection"
+
+        return self.form
+
+
     def save(self, *args, **kwargs):
         self._en_description = stopwords.save_description(self.en_principio_activo, self.en_accion_terapeutica, self.en_presentacion, self.en_concentracion, self.form, 'en')
         self._es_description = stopwords.save_description(self.principio_activo, self.accion_terapeutica, self.presentacion, self.concentracion, self.form, 'es')

@@ -1,7 +1,7 @@
 # Create your views here.
 # -*- coding: utf8 -*-
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
 from django.utils.datastructures import SortedDict
 
 import models
@@ -166,7 +166,10 @@ def search(request):
             collection = [(x.es_name, x.form, x._es_name, x._es_description, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es'), fix_group_terp(x, 'es')) for x in models.Products.objects.all()]
         else:
             query = process_query(query, stopwords.en_stopwords)
-            collection = [(x.en_name, x.form, x._en_name, x._en_description, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'es'), divide(x.en_presentacion, 'es'), fix_group_terp(x, 'en')) for x in models.Products.objects.all()]
+            collection = [(x.en_name, x.form_trans(), x._en_name, x._en_description, x.image,
+                           [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica,
+                           divide(x.en_concentracion, 'es'), divide(x.en_presentacion, 'es'), fix_group_terp(x, 'en'))
+                          for x in models.Products.objects.all()]
         result = []
         if len(query):
             result = [(value[0], value[1], value[4], value[5], value[6], value[7], value[8], value[9], value[10]) if match(query, stopwords.word_tokenize(value[2]), stopwords.word_tokenize(value[3])) else None for value in collection]
@@ -218,7 +221,7 @@ def ajax_news(request, id):
 
 def news(request):
     if request.method == 'GET':
-        _news = [(x.id, x.title, x.date, x.description) for x in models.News.objects.all()]
+        _news = [(x.id, x.title, x.date, x.description) for x in models.News.objects.all().order_by('-pk')]
         if request.GET['language'] == 'es':
             return render(request, 'noticias.html', {
                 'categories': collection_es,
@@ -299,7 +302,13 @@ def categories(request, id):
                 collection[(category.en_name, True)] = SortedDict()
                 if request.GET['language'] == 'en':
                     for son in category.sons.all():
-                        collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in son.products.all()]
+                        collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form_trans(), x.image,
+                                                                              [y.en_name for y in x.suppliers.all()],
+                                                                              x.en_principio_activo,
+                                                                              x.en_accion_terapeutica,
+                                                                              divide(x.en_concentracion, 'en'),
+                                                                              divide(x.en_presentacion, 'en')) for x in
+                                                                             son.products.all()]
                 else:
                     for son in category.sons.all():
                         collection[(category.es_name, True)][son.es_name] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in son.products.all()]
@@ -307,13 +316,23 @@ def categories(request, id):
                 collection[(category.es_name, True)] = SortedDict()
                 if request.GET['language'] == 'en':
                     for son in category.sons.all():
-                        collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in son.products.all()]
+                        collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form_trans(), x.image,
+                                                                              [y.en_name for y in x.suppliers.all()],
+                                                                              x.en_principio_activo,
+                                                                              x.en_accion_terapeutica,
+                                                                              divide(x.en_concentracion, 'en'),
+                                                                              divide(x.en_presentacion, 'en')) for x in
+                                                                             son.products.all()]
                 else:
                     for son in category.sons.all():
                         collection[(category.es_name, True)][son.es_name] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in son.products.all()]
         else:
             if request.GET['language'] == 'en':
-                collection[(category.en_name, False)] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in category.products.all()]
+                collection[(category.en_name, False)] = [(x.en_name, x.form_trans(), x.image,
+                                                          [y.en_name for y in x.suppliers.all()], x.en_principio_activo,
+                                                          x.en_accion_terapeutica, divide(x.en_concentracion, 'en'),
+                                                          divide(x.en_presentacion, 'en')) for x in
+                                                         category.products.all()]
             else:
                 collection[(category.es_name, False)] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in category.products.all()]
         if request.GET['language'] == 'en':
@@ -348,7 +367,10 @@ def products(request, id):
         if request.GET['language'] == 'en':
             return render(request, 'producto_new.html', {
                 'language': 'en',
-                'collection': (product.en_name, product.form, product.image, [y.en_name for y in product.suppliers.all()], product.en_principio_activo, product.en_accion_terapeutica, divide(product.en_concentracion, 'en'), divide(product.en_presentacion, 'en'), var),
+                'collection': (
+                product.en_name, product.form_trans(), product.image, [y.en_name for y in product.suppliers.all()],
+                product.en_principio_activo, product.en_accion_terapeutica, divide(product.en_concentracion, 'en'),
+                divide(product.en_presentacion, 'en'), var),
                 'categories': collection_en
             })
         else:
@@ -370,7 +392,15 @@ def categories_all(request):
                         collection[(category.en_name, True)] = SortedDict()
                         if request.GET['language'] == 'en':
                             for son in category.sons.all():
-                                collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in son.products.all()]
+                                collection[(category.en_name, True)][son.en_name] = [(
+                                                                                     x.en_name, x.form_trans(), x.image,
+                                                                                     [y.en_name for y in
+                                                                                      x.suppliers.all()],
+                                                                                     x.en_principio_activo,
+                                                                                     x.en_accion_terapeutica,
+                                                                                     divide(x.en_concentracion, 'en'),
+                                                                                     divide(x.en_presentacion, 'en'))
+                                                                                     for x in son.products.all()]
                         else:
                             for son in category.sons.all():
                                 collection[(category.es_name, True)][son.es_name] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in son.products.all()]
@@ -378,13 +408,26 @@ def categories_all(request):
                         collection[(category.es_name, True)] = SortedDict()
                         if request.GET['language'] == 'en':
                             for son in category.sons.all():
-                                collection[(category.en_name, True)][son.en_name] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in son.products.all()]
+                                collection[(category.en_name, True)][son.en_name] = [(
+                                                                                     x.en_name, x.form_trans(), x.image,
+                                                                                     [y.en_name for y in
+                                                                                      x.suppliers.all()],
+                                                                                     x.en_principio_activo,
+                                                                                     x.en_accion_terapeutica,
+                                                                                     divide(x.en_concentracion, 'en'),
+                                                                                     divide(x.en_presentacion, 'en'))
+                                                                                     for x in son.products.all()]
                         else:
                             for son in category.sons.all():
                                 collection[(category.es_name, True)][son.es_name] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in son.products.all()]
                 else:
                     if request.GET['language'] == 'en':
-                        collection[(category.en_name, False)] = [(x.en_name, x.form, x.image, [y.en_name for y in x.suppliers.all()], x.en_principio_activo, x.en_accion_terapeutica, divide(x.en_concentracion, 'en'), divide(x.en_presentacion, 'en')) for x in category.products.all()]
+                        collection[(category.en_name, False)] = [(x.en_name, x.form_trans(), x.image,
+                                                                  [y.en_name for y in x.suppliers.all()],
+                                                                  x.en_principio_activo, x.en_accion_terapeutica,
+                                                                  divide(x.en_concentracion, 'en'),
+                                                                  divide(x.en_presentacion, 'en')) for x in
+                                                                 category.products.all()]
                     else:
                         collection[(category.es_name, False)] = [(x.es_name, x.form, x.image, [y.es_name for y in x.suppliers.all()], x.principio_activo, x.accion_terapeutica, divide(x.concentracion, 'es'), divide(x.presentacion, 'es')) for x in category.products.all()]
                         # if len(category.products.all()):
