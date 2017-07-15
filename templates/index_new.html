@@ -64,7 +64,8 @@
 <div id="nuevocontenedor">
     {% block header %}
         <header>
-            <img style="display:block" width="1024px" height="92px" src="{% static 'images/banner_top_one color_with_cosa.jpg' %}">
+            <img style="display:block" width="1024px" height="92px"
+                 src="{% static 'images/banner_top_one color_with_cosa.jpg' %}">
         </header>
         <nav>
             {#    TODO: Rebiuld this!!!!!!#}
@@ -121,11 +122,13 @@
                                             <ul style="width: 180px">
                                                 {% for key, value in values.items %}
                                                     <li>
-                                                        <span><a href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a></span>
+                                                        <span><a
+                                                                href="/categories/{{ key.1 }}/?language=es">{{ key.0 }}</a></span>
                                                         <ul>
                                                             {% for v in value %}
                                                                 <li>
-                                                                    <span><a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
+                                                                    <span><a
+                                                                            href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
                                                                 </li>
                                                             {% endfor %}
                                                         </ul>
@@ -136,7 +139,8 @@
                                             <ul>
                                                 {% for v in values %}
                                                     <li>
-                                                        <span><a href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
+                                                        <span><a
+                                                                href="/products/{{ v.1 }}/?language=es">{{ v.0 }}</a></span>
                                                     </li>
                                                 {% endfor %}
                                             </ul>
@@ -166,13 +170,17 @@
                                             </td>
                                         </tr>
                                         <tr class="first_line">
-                                            <td align="center"><img src="{% static 'images/richet_small.jpg' %}" width="100" height="100"
+                                            <td align="center"><img src="{% static 'images/richet_small.jpg' %}"
+                                                                    width="100" height="100"
                                                                     alt=""/></td>
-                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100" height="100" alt=""/>
+                                            <td align="center"><img src="{% static 'images/BDR.jpg' %}" width="100"
+                                                                    height="100" alt=""/>
                                             </td>
-                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100" height="100" alt=""/>
+                                            <td align="center"><img src="{% static 'images/KPR.jpg' %}" width="100"
+                                                                    height="100" alt=""/>
                                             </td>
-                                            <td align="center"><img src="{% static 'images/logo_CIMAB.jpg' %}" width="100" height="100" alt=""/>
+                                            <td align="center"><img src="{% static 'images/logo_CIMAB.jpg' %}"
+                                                                    width="100" height="100" alt=""/>
                                             </td>
                                         </tr>
                                         <tr class="tr_inner">
@@ -288,30 +296,43 @@
                                     <td width="150"><img
                                             src="{% static 'images/productos/Surfactante B - 2.jpg' %}" width="150"
                                             height="120" alt=""/></td>
-                                    <td width="156" valign="top"><a href="/products/1/?language=es" class="text-three">Surfactante B</a>
+                                    <td width="156" valign="top"><a href="/products/1/?language=es" class="text-three">Surfactante
+                                        B</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     {#                                    <td><img src="{% static 'images/productos/Dacarbazine copy.jpg' %}" width="150" height="120" alt=""/></td>#}
-                                    <td><img src="{% static 'images/productos/Dacarbazine.jpg' %}" width="150" height="120" alt=""/></td>
-                                    <td valign="top"><a class="text-three" href="/products/44/?language=es">Dacarbazine</a></td>
+                                    <td><img src="{% static 'images/productos/Dacarbazine.jpg' %}" width="150"
+                                             height="120" alt=""/></td>
+                                    <td valign="top"><a class="text-three"
+                                                        href="/products/44/?language=es">Dacarbazine</a></td>
                                 </tr>
                                 <tr>
-                                    <td><img src="{% static 'images/productos/Gemcitabina.jpg' %}" width="150" height="120" alt=""/></td>
+                                    <td><img src="{% static 'images/productos/Gemcitabina.jpg' %}" width="150"
+                                             height="120" alt=""/></td>
                                     {#                                    <td><img src="{% static 'images/productos/Gemcitabina copy.jpg' %}" width="150" height="120" alt=""/></td>#}
-                                    <td valign="top"><a class="text-three" href="/products/38/?language=es">Gemcitabina</a></td>
+                                    <td valign="top"><a class="text-three"
+                                                        href="/products/38/?language=es">Gemcitabina</a></td>
                                 </tr>
                             </table>
                         </td>
                     </tr>
                     <tr>
                         <td valign="top">
-                            <p class="text-two">Frifarma S.R.L. es una empresa distribuidora de especialidades farmacéuticas establecida en la República Dominicana desde el año 2006. Es una empresa plurinacional conformada por especialistas
-                                y directivos de República Dominicana y otros países, con la capacidad para manejar de manera favorable la dinámica regulatoria y la elevada competitividad del mercado local de medicamentos genéricos.
-                                La División de Ventas se encuentra liderada por un grupo de experimentados especialistas en marketing farmacéutico.
+                            <p class="text-two">Frifarma S.R.L. es una empresa distribuidora de especialidades
+                                farmacéuticas establecida en la República Dominicana desde el año 2006. Es una empresa
+                                plurinacional conformada por especialistas
+                                y directivos de República Dominicana y otros países, con la capacidad para manejar de
+                                manera favorable la dinámica regulatoria y la elevada competitividad del mercado local
+                                de medicamentos genéricos.
+                                La División de Ventas se encuentra liderada por un grupo de experimentados especialistas
+                                en marketing farmacéutico.
                             </p>
 
-                            <p class="text-two">Somos una empresa líder en los segmentos de la Atención al Paciente Grave, la Infectología, la Oncología y la Neonatología, con un amplio portafolio de productos registrados. Posee una amplia red de clientes, entre los que se destacan las instituciones de salud más prestigiosas en las principales ciudades y regiones del país.
+                            <p class="text-two">Somos una empresa líder en los segmentos de la Atención al Paciente
+                                Grave, la Infectología, la Oncología y la Neonatología, con un amplio portafolio de
+                                productos registrados. Posee una amplia red de clientes, entre los que se destacan las
+                                instituciones de salud más prestigiosas en las principales ciudades y regiones del país.
                             </p>
                         </td>
                     </tr>
@@ -325,7 +346,7 @@
     {% endblock %}
     {% block footer %}
         <footer id="footer">
-            <p style="padding-top:12px" id="p1">Frifarma S.A. Calle Hatuey # 196. "Los Cacicazgos" Santo Domingo. República
+            <p style="padding-top:12px" id="p1">Frifarma S.A. Ave Enriquillo # 125. Santo Domingo. República
                 Dominicana. </p>
 
             <p id="p2"><strong> Teléfono : 1809 4829958 Fax: 1809
